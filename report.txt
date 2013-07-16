@@ -24,3 +24,5 @@ With proper modeling, the input signals may reside within the set of integers[BI
 
 An ADALINE circuit might be learning or generalizing [BIB:... find one].
 A notional signal will inform the circuit to look for desired output for a given input.
+
+Adding something for the sake of it.
