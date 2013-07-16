@@ -1,0 +1,26 @@
+
+Some of Widrow's earliest works mention physical ADALINE circuits [BIB:ADALINE INTRO][BIB:SMARTER THAN SWEET].
+In (MSA - YEAR OF BlackJack paper), Widrow specifically mentions utilization of a notional ADALINE[BIB:PUNISH/REWARD] and while in some of the cornerstone Computational Intelligence literature, such as that of Paul Werbos [BIB:BPTT], clever representations allow for large, fast neural networks using limited hardware, modern hardware provides the resources to take a more naive approach.
+
+??? Something about how a naive approach allows many ADALINEs to come into being quickly without having to worry about specifics.
+
+The basic requirements of the naive approach map directly onto the typical ADALINE picture from the literature [BIB:ADALINE INTRO][BIB:... Find another]:
+   * A set of input signals
+   * A vector of weights
+   * An output value 
+From the same literature, the weight vector does not have any initial requirements although the purpose of an ADALINE is to adjust its own weights to provide a desired output.
+Therefore the notional ADALINE populates itself with random weights in the absence of user specified values. 
+The input vector must provide write access at any time to be of any use and read access to faciliate iterative logging.
+A stored output value with read-only access allows iterative logging.
+The UML for such a class would look like: (MSA - UML HERE)
+
+The internal representation of the signal and weight vectors might involve bit fields and clever bitwise memory copies to allow easy population.
+Again, the naive approach eases understanding:
+Let s(k) represent input signal k where 0 <= k <= n and n represents the total number of input signals accepted by the notional ADALINE plus a bias value.
+By definition, n also represents the length of the weight vector.
+Each element in the weight vector, due to the continuity requirement of the learning algorithm, must reside within the set of real numbers[BIB:ADALINE INTRO].
+The inputs into the circuit might represent quantized input, as in the pressure readings from weather data [BIB:WEATHER PREDICTION], or it may be binary input, as in the presence of a particular playing card in any given hand [BIB:PUNISH/REWARD].
+With proper modeling, the input signals may reside within the set of integers[BIB:SMARTER THAN SWEET].
+
+An ADALINE circuit might be learning or generalizing [BIB:... find one].
+A notional signal will inform the circuit to look for desired output for a given input.
