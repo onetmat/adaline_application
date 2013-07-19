@@ -22,7 +22,17 @@ Each element in the weight vector, due to the continuity requirement of the lear
 The inputs into the circuit might represent quantized input, as in the pressure readings from weather data [BIB:WEATHER PREDICTION], or it may be binary input, as in the presence of a particular playing card in any given hand [BIB:PUNISH/REWARD].
 With proper modeling, the input signals may reside within the set of integers[BIB:SMARTER THAN SWEET].
 
-An ADALINE circuit might be learning or generalizing [BIB:... find one].
-A notional signal will inform the circuit to look for desired output for a given input.
+?? A notional signal will inform the circuit to look for desired output for a given input. ??
 
-Adding something for the sake of it.
+An ADALINE circuit might be learning or generalizing.
+In either mode, the circuit generally undergoes the following phases:
+   * Accept Input Signals
+   * Weigh Inputs
+   * Quantize Output
+If generalizing, the ADALINE will repeat the process.
+If learning, there are additional phases which in specific applcation according to the learning method applied:
+   * Determine Error Signal
+   * Adjust weights
+The error signal determination, according to Widrow and Hoff in [BIB: ADALINE INTRO], should derive from the output before quantization.
+Other papers, such as [BIB:PUNISH/REWARD], derives the error from the quantized output of multiple ADALINE runs.
+These results indicate that either approach results in convergent learning, although [BIB:PUNISH/REWARD] only proves convergence based on a series of decisions.
