@@ -8,7 +8,12 @@ namespace CompIntel
 
 namespace Shapes
 {
+   const static double TDesiredOutput = 60.0;
+   const static double GDesiredOutput = 0.0;
+   const static double FDesiredOutput = -60.0;
+
    const static int ShapeSignalLength = 17;
+
    static char tShapeOne[ShapeSignalLength] =
       "XXX "
       " X  "

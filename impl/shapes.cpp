@@ -39,20 +39,33 @@ double Shapes::PerformShapeLearningIteration(
 {
    double errorSquared = 0.0;
 
+   // submit the shape to the adaline
+   SubmitShape(shape, adaline);
+   // W * I
+   adaline.WeighInputs();
+   // retrieve the output signal, stored in a temp
+   // and calculate the error term (desired - actual output)
+   errorSquared = desiredOutputSignal - adaline.GetOutputSignal();
+   // adjust the weights
+   adaline.Learn(desiredOutputSignal);
+   // and returned the squared result of the error
+   errorSquared *= errorSquared;
+
    return errorSquared;
 }
 
 // Teach an Adaline circuit to respond to the patterns in shapes.h
 // as specified in "Adaptive Linear Circuits" by Widrow and Hoff.
-// T => +60
-// G => 0
-// F => -60
 void Shapes::TeachAllShapes()
 {
    // the sum of error^2 from each training run
-   double sumOfSquarErrors = 0.0;
+   double sumOfSquareErrors = 0.0;
+   // the error term^2 from the last learning
+   double squareError = 0.0;
    // as in, keep trying to train the adaline
    bool doAnotherIteration = true;
+   // Track the number of iterations in counting numbers
+   unsigned int iteration = 1;
    // the adaline that will be taught to recognize the signals in shapes.h
    CompIntel::Adaline shapeAdaline(ShapeSignalLength);
 
@@ -66,10 +79,63 @@ void Shapes::TeachAllShapes()
    // (square the error from each run first and then add it to the total)
    while (doAnotherIteration)
    {
-      SubmitShape(fShapeTwo, shapeAdaline);
-      shapeAdaline.WeighInputs();
-      shapeAdaline.Learn(-60.0);
+      sumOfSquareErrors = 0.0;
+      std::cout << "Iteration: " << iteration++ << std::endl;
+
+      std::cout << "FOR THE F SHAPES: " << std::endl;
+      squareError = PerformShapeLearningIteration(fShapeTwo,
+                     shapeAdaline,
+                     FDesiredOutput);
+      sumOfSquareErrors += squareError;
       std::cout << "Output signal: " << shapeAdaline.GetOutputSignal()
+         << std::endl;
+      std::cout << "Square Error: " << squareError << std::endl;
+
+      squareError = PerformShapeLearningIteration(fShapeOne,
+                     shapeAdaline,
+                     FDesiredOutput);
+      sumOfSquareErrors += squareError;
+      std::cout << "Output signal: " << shapeAdaline.GetOutputSignal()
+         << std::endl;
+      std::cout << "Square Error: " << squareError << std::endl;
+
+
+      std::cout << std::endl << "FOR THE T SHAPES: " << std::endl;
+      squareError = PerformShapeLearningIteration(tShapeOne,
+                     shapeAdaline,
+                     TDesiredOutput);
+      sumOfSquareErrors += squareError;
+      std::cout << "Output signal: " << shapeAdaline.GetOutputSignal()
+         << std::endl;
+      std::cout << "Square Error: " << squareError << std::endl;
+
+      squareError = PerformShapeLearningIteration(tShapeTwo,
+                     shapeAdaline,
+                     TDesiredOutput);
+      sumOfSquareErrors += squareError;
+      std::cout << "Output signal: " << shapeAdaline.GetOutputSignal()
+         << std::endl;
+      std::cout << "Square Error: " << squareError << std::endl;
+
+      std::cout << std::endl << "FOR THE G SHAPES: " << std::endl;
+
+      squareError = PerformShapeLearningIteration(gShapeOne,
+                     shapeAdaline,
+                     GDesiredOutput);
+      sumOfSquareErrors += squareError;
+      std::cout << "Output signal: " << shapeAdaline.GetOutputSignal()
+         << std::endl;
+      std::cout << "Square Error: " << squareError << std::endl;
+
+      squareError = PerformShapeLearningIteration(gShapeTwo,
+                     shapeAdaline,
+                     GDesiredOutput);
+      sumOfSquareErrors += squareError;
+      std::cout << "Output signal: " << shapeAdaline.GetOutputSignal()
+         << std::endl;
+      std::cout << "Square Error: " << squareError << std::endl;
+
+      std::cout << "Sum of Square Errors: " << sumOfSquareErrors
          << std::endl;
       std::cout << "Continue (y/n)? : " << std::endl;
       std::cin >> ch;
