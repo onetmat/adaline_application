@@ -1,6 +1,11 @@
 #ifndef SHAPES_H_
 #define SHAPES_H_
 
+namespace CompIntel
+{
+   class Adaline;
+}
+
 namespace Shapes
 {
    const static int ShapeSignalLength = 17;
@@ -47,5 +52,8 @@ namespace Shapes
    ;
 
    void TeachAllShapes();
+
+   void SubmitShape(const char shape[ShapeSignalLength],
+      CompIntel::Adaline& adaline);
 }
 #endif
