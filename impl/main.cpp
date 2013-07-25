@@ -7,7 +7,7 @@ void TeachAdalineT();
 
 int main(int argc, char **argv)
 {
-   TeachAdalineT();
+   Shapes::TeachAllShapes();
    return 0;
 }
 

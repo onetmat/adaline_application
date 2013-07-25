@@ -32,6 +32,16 @@ void Shapes::SubmitShape(const char shape[ShapeSignalLength],
    }
 }
 
+double Shapes::PerformShapeLearningIteration(
+   const char shape[ShapeSignalLength],
+   CompIntel::Adaline& adaline,
+   double desiredOutputSignal)
+{
+   double errorSquared = 0.0;
+
+   return errorSquared;
+}
+
 // Teach an Adaline circuit to respond to the patterns in shapes.h
 // as specified in "Adaptive Linear Circuits" by Widrow and Hoff.
 // T => +60

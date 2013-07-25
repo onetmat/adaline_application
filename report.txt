@@ -40,3 +40,7 @@ These results indicate that either approach results in convergent learning, alth
 What better way to unit test a code segment than with proven data? Widrow and Hoff [BIB: ADALINE INTRO] provide all of the data required to recreate their experiment.
 Specifically, it must be possible to train a notional Adaline to recognize a T, F, and G shapes with similar error curves to that found in [BIB: ADALINE INTRO].
 The specific sum of square errors may differ due to initial weights, but the error must converge to near zero.
+
+[BIB:PUNISH/REWARD] proves convergence for a Gaussian approximation of the game of Blackjack.
+The goal here involves appeasing a critic with no apparant rhyme or reason to its actions.
+Will the king be satisfied?
