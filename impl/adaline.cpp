@@ -13,11 +13,7 @@ Adaline::Adaline(unsigned int numSignals)
    numberOfInputs = numSignals+1;
    inputSignals = new char[numberOfInputs];
    weights = new double[numberOfInputs];
-   /*srand(time(NULL));
-   for (unsigned int i = 0; i < numberOfInputs; ++i)
-   {
-      weights[i] = (double)rand() / rand();
-   }*/
+   SetRandomWeights();
    outputSignal = 0.0;
    learningRate = 1.0;
    inputSignals[0] = 1.0;
@@ -67,5 +63,14 @@ void Adaline::Learn(double desiredOutput)
    {
       weights[i] = weights[i]
          + learningRateFractionOfError * inputSignals[i];
+   }
+}
+
+void Adaline::SetRandomWeights()
+{
+   srand(time(NULL));
+   for (unsigned int i = 0; i < numberOfInputs; ++i)
+   {
+      weights[i] = (double)rand() / rand();
    }
 }

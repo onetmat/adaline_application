@@ -52,6 +52,9 @@ namespace CompIntel
       void Learn(double desiredOutput);
 
    private:
+      // Seed the random number generator and assign random
+      // weights into the vector.
+      void SetRandomWeights();
 
       // Check a passed index to avoid over or under flow
       // returns true if the index is valid

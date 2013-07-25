@@ -8,4 +8,4 @@ adaline.o:
 all: main
 
 clean:
-	rm *.o *.out
+	rm -f *.o *.out

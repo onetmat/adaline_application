@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "adaline.h"
+#include "shapes.h"
 
 void TeachAdalineT();
 
@@ -30,19 +31,6 @@ void PrintWeightVector(const CompIntel::Adaline& adaline)
 // shaped signal.
 void TeachAdalineT()
 {
-   static char tShapeOne[17] =
-      "XXX "
-      " X  "
-      " X  "
-      "    "
-   ;
-
-   static char tShapeTwo[17] =
-      "    "
-      " XXX"
-      "  X "
-      "  X "
-   ;
 
    CompIntel::Adaline tAdaline(16);
 
