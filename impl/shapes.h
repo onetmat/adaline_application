@@ -1,46 +1,51 @@
 #ifndef SHAPES_H_
 #define SHAPES_H_
 
-   static char tShapeOne[17] =
+namespace Shapes
+{
+   const static int ShapeSignalLength = 17;
+   static char tShapeOne[ShapeSignalLength] =
       "XXX "
       " X  "
       " X  "
       "    "
    ;
 
-   static char tShapeTwo[17] =
+   static char tShapeTwo[ShapeSignalLength] =
       "    "
       " XXX"
       "  X "
       "  X "
    ;
 
-   static char gShapeOne[17] =
+   static char gShapeOne[ShapeSignalLength] =
       "XXX "
       "X   "
       "XXX "
       "XXX "
    ;
 
-   static char gShapeTwo[17] =
+   static char gShapeTwo[ShapeSignalLength] =
       " XXX"
       " X  "
       " XXX"
       " XXX"
    ;
 
-   static char fShapeOne[17] =
+   static char fShapeOne[ShapeSignalLength] =
       "XXX "
       "XX  "
       "X   "
       "X   "
    ;
 
-   static char fShapeTwo[17] =
+   static char fShapeTwo[ShapeSignalLength] =
       " XXX"
       " XX "
       " X  "
       " X  "
    ;
 
+   void TeachAllShapes();
+}
 #endif

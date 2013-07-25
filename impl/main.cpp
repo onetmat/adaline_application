@@ -32,6 +32,13 @@ void PrintWeightVector(const CompIntel::Adaline& adaline)
 void TeachAdalineT()
 {
 
+   static char tShapeOne[17] =
+      "XXX "
+      " X  "
+      " X  "
+      "    "
+   ;
+
    CompIntel::Adaline tAdaline(16);
 
    double desiredOutput = 60.0; // trying to set output of adaline to 60
