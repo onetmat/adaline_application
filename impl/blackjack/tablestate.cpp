@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "gamestate.h"
+#include "tablestate.h"
 #include "../adaline.h"
 #include "../carddeck/deck.h"
 
-#undef DEBUG_GAMESTATE
+#undef DEBUG_TABLESTATE
 
 using namespace Blackjack;
 
@@ -12,21 +12,21 @@ static const int BlackjackSignalCount = 20;
 static const int IndexForPlayerSignals = 10;
 static const int AceCountingSignalIndex = 18;
 
-GameState::GameState(bool acesAreEleven)
+TableState::TableState(bool acesAreEleven)
 {
    aceCountsAsEleven = acesAreEleven;
    dealerCardShowing = '0'; // intentionally invalid
    sumOfPlayerCards = 0;
 }
 
-GameState::GameState(const GameState& rhs)
+TableState::TableState(const TableState& rhs)
 {
    aceCountsAsEleven = rhs.aceCountsAsEleven;
    dealerCardShowing = rhs.dealerCardShowing;
    sumOfPlayerCards = rhs.sumOfPlayerCards;
 }
 
-void GameState::SetDealerCardShowing(const PlayingCards::Card& c)
+void TableState::SetDealerCardShowing(const PlayingCards::Card& c)
 {
    // if the dealer is receiving a face card
    if (c.IsFaceCard())
@@ -41,7 +41,7 @@ void GameState::SetDealerCardShowing(const PlayingCards::Card& c)
    }
 }
 
-void GameState::DealCardToPlayer(const PlayingCards::Card& c)
+void TableState::DealCardToPlayer(const PlayingCards::Card& c)
 {
    // if the card is straight numeric, add that value to the current total
    if (c.IsNumeric())
@@ -71,7 +71,7 @@ void GameState::DealCardToPlayer(const PlayingCards::Card& c)
    // else don't do anything
 }
 
-void GameState::SetAdalineInputs(CompIntel::Adaline& tgt)
+void TableState::SetAdalineInputs(CompIntel::Adaline& tgt)
 {
    // for this to work, the adaline must be setup for at least 20
    // signals
@@ -85,7 +85,7 @@ void GameState::SetAdalineInputs(CompIntel::Adaline& tgt)
 
       // set dealer signals (first 9)
 
-#ifdef DEBUG_GAMESTATE
+#ifdef DEBUG_TABLESTATE
       // debugging
       std::cout << "Because dealer showing: " << dealerCardShowing
          << std::endl;
@@ -100,7 +100,7 @@ void GameState::SetAdalineInputs(CompIntel::Adaline& tgt)
       // next, determine signals for player card sum
       int playerCardSumSignals = PlayerCountToAdalineInputs();
 
-#ifdef DEBUG_GAMESTATE
+#ifdef DEBUG_TABLESTATE
       std::cout << "Because player sum is: " << sumOfPlayerCards
          << std::endl;
       std::cout << "About to set the next " << playerCardSumSignals

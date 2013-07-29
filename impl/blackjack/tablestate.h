@@ -13,15 +13,15 @@ namespace PlayingCards
 
 namespace Blackjack
 {
-   // GameState tracks the three input variables
+   // TableState tracks the three input variables
    // from Widrow, et. al, "Punish/Reward..."
-   class GameState
+   class TableState
    {
    public:
-      GameState(bool acesAreEleven = false);
-      ~GameState() {};
+      TableState(bool acesAreEleven = false);
+      ~TableState() {};
 
-      GameState(const GameState& rhs);
+      TableState(const TableState& rhs);
 
       // Set the current dealer card showing
       void SetDealerCardShowing(const PlayingCards::Card& c);

@@ -1,6 +1,6 @@
 
-main: adaline.o shapes.o deck.o gamestate.o
-	g++ main.cpp adaline.o shapes.o deck.o gamestate.o
+main: adaline.o shapes.o deck.o tablestate.o
+	g++ main.cpp adaline.o shapes.o deck.o tablestate.o
 
 adaline.o:
 	g++ -c -o $@ adaline.cpp
@@ -11,8 +11,8 @@ shapes.o:
 deck.o:
 	g++ -c -o $@ carddeck/deck.cpp
 
-gamestate.o:
-	g++ -c -o $@ blackjack/gamestate.cpp
+tablestate.o:
+	g++ -c -o $@ blackjack/tablestate.cpp
 
 all: main
 

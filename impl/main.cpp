@@ -4,27 +4,27 @@
 #include "shapes.h"
 
 #include "carddeck/deck.h"
-#include "blackjack/gamestate.h"
+#include "blackjack/tablestate.h"
 
 void TeachAdalineT();
 void TestDrawingCards();
-void TestSettingAdalineInputsFromGameState();
+void TestSettingAdalineInputsFromTableState();
 
 int main(int argc, char **argv)
 {
    //Shapes::TeachAllShapes();
    //TestDrawingCards();
-   TestSettingAdalineInputsFromGameState();
+   TestSettingAdalineInputsFromTableState();
    return 0;
 }
 
-void TestSettingAdalineInputsFromGameState()
+void TestSettingAdalineInputsFromTableState()
 {
    PlayingCards::Card dealerShowingOne(PlayingCards::HEARTS, 'A');
    PlayingCards::Card playerCardOneA(PlayingCards::SPADES, '8');
    PlayingCards::Card playerCardTwoA(PlayingCards::SPADES, 'K');
 
-   Blackjack::GameState stateOne;
+   Blackjack::TableState stateOne;
    CompIntel::Adaline player(20);
 
    stateOne.SetDealerCardShowing(dealerShowingOne);
@@ -32,13 +32,12 @@ void TestSettingAdalineInputsFromGameState()
    stateOne.DealCardToPlayer(playerCardTwoA);
 
    stateOne.SetAdalineInputs(player);
-     
 
    PlayingCards::Card dealerShowingTwo(PlayingCards::HEARTS, '7');
    PlayingCards::Card playerCardOneB(PlayingCards::SPADES, 'A');
    PlayingCards::Card playerCardTwoB(PlayingCards::SPADES, '2');
 
-   Blackjack::GameState stateTwo(true);
+   Blackjack::TableState stateTwo(true);
 
    stateTwo.SetDealerCardShowing(dealerShowingTwo);
    stateTwo.DealCardToPlayer(playerCardOneB);
