@@ -8,6 +8,9 @@
 #include "carddeck/deck.h"
 #include "blackjack/tablestate.h"
 #include "blackjack/game.h"
+#include "blackjack/adaline_adapter.h"
+
+void PrintWeightVector(const CompIntel::Adaline& adaline);
 
 void TeachAdalineT();
 void TestDrawingCards();
@@ -20,8 +23,29 @@ int main(int argc, char **argv)
    //Shapes::TeachAllShapes();
    //TestDrawingCards();
    //TestSettingAdalineInputsFromTableState();
-   TestGameKernel();
+   //TestGameKernel();
+   TestAdalineAdapter();
    return 0;
+}
+
+void TestAdalineAdapter()
+{
+   Blackjack::AdalineAdapter adapter;
+
+   PrintWeightVector(adapter.GetAdaline());
+
+   adapter.PlayGameWithAcesAsEleven();
+   PrintWeightVector(adapter.GetAdaline());
+
+   adapter.PunishOrRewardPlayer();
+   PrintWeightVector(adapter.GetAdaline());
+
+   for (int i = 0; i < 20; ++i)
+   {
+      adapter.PlayGameWithAcesAsEleven();
+      adapter.PunishOrRewardPlayer();
+   }
+   PrintWeightVector(adapter.GetAdaline());
 }
 
 void TestGameKernel()

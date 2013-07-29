@@ -21,6 +21,10 @@ namespace Blackjack
       // Get details of the last game
       inline const Game* GetLastGame() const { return lastGame; }
 
+      // Get the adaline
+      inline const CompIntel::Adaline& GetAdaline() const
+         { return adaptivePlayer; }
+
       // Punish or reward the adaline circuit.
       void PunishOrRewardPlayer();
 

@@ -21,6 +21,7 @@ AdalineAdapter::AdalineAdapter()
 void AdalineAdapter::PlayGameWithAcesAsEleven()
 {
    srand(time(NULL));
+   delete lastGame;
    lastGame = new Game(true);
    RunGameKernel();
 }
@@ -28,6 +29,7 @@ void AdalineAdapter::PlayGameWithAcesAsEleven()
 void AdalineAdapter::PlayGameWithAcesAsOne()
 {
    srand(time(NULL));
+   delete lastGame;
    lastGame = new Game(false);
    RunGameKernel();
 }
@@ -104,9 +106,22 @@ void AdalineAdapter::PunishOrRewardPlayer()
 #endif
                reQuantizedOutput *= -1;
             }
+#ifdef DEBUG_ADAPTER
+            std::cout << "Rewarding..." << std::endl;
+
+#endif
             // then submit it to the Adaline as desired output
             adaptivePlayer.Learn(reQuantizedOutput);
+#ifdef DEBUG_ADAPTER
+            std::cout << "Next table state... " << std::endl;
+#endif
+         } // foreach table state
+         // update games won vs games played
+         if (!shouldPunish)
+         {
+            gamesWon += 1;
          }
+         gamesPlayed += 1;
       } // no one got a "natural"
 #ifdef DEBUG_ADAPTER
       else
@@ -114,6 +129,7 @@ void AdalineAdapter::PunishOrRewardPlayer()
          std::cout << "Not considering last game because someone got 21."
             << std::endl;
       }
+      std::cout << "END GAME" << std::endl;
 #endif
    } // valid last game
 }

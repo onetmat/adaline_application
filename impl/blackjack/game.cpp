@@ -12,9 +12,17 @@ static const int BlackJackSum = 21;
 static const int DealerStandMin = 17; // Minimum sum on which dealer can stand.
 
 // RAII... in this case, you end up with an in-progress blackjack game!
-Game::Game(bool acesCountAsEleven) : currentTableState(acesCountAsEleven)
+Game::Game(bool acesCountAsEleven)
 {
+   Reset(acesCountAsEleven);
+}
+
+void Game::Reset(bool acesCountAsEleven)
+{
+   currentTableState = TableState(acesCountAsEleven);
+
    dealerSum = 0;
+   tableStateHistory.clear();
    // According to Thorp page 9, to setup for a blackjack game
    // 1) Shuffle
    // 2) Player cuts

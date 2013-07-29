@@ -30,6 +30,8 @@ Deck::Deck()
 
 void Deck::Shuffle()
 {
+   // reset the deck "top"
+   deckTop = 0;
    // basic algorithm to shuffle a deck:
    // 1) split the deck in half
    // 2) then while either pile still has cards

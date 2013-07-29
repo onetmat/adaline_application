@@ -20,6 +20,10 @@ namespace Blackjack
    public:
       Game(bool acesCountAsEleven = true);
 
+      // When the draw ends and all data has been extracted,
+      // this method will reset this class
+      void Reset(bool acesCountAsEleven = true);
+
       // Current table state is managed entirely by this class.
       inline const TableState& GetCurrentTableState() const
          { return currentTableState; }
