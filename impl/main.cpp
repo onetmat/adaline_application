@@ -3,11 +3,16 @@
 #include "adaline.h"
 #include "shapes.h"
 
+#include "carddeck/deck.h"
+
 void TeachAdalineT();
 
 int main(int argc, char **argv)
 {
-   Shapes::TeachAllShapes();
+   //Shapes::TeachAllShapes();
+   PlayingCards::Deck d;
+
+   d.PrintDeckInfo();
    return 0;
 }
 
