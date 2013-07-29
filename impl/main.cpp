@@ -1,21 +1,67 @@
 #include <iostream>
 
+#include <cstdlib> // for srand
+
 #include "adaline.h"
 #include "shapes.h"
 
 #include "carddeck/deck.h"
 #include "blackjack/tablestate.h"
+#include "blackjack/game.h"
 
 void TeachAdalineT();
 void TestDrawingCards();
 void TestSettingAdalineInputsFromTableState();
+void TestGameKernel();
 
 int main(int argc, char **argv)
 {
    //Shapes::TeachAllShapes();
    //TestDrawingCards();
-   TestSettingAdalineInputsFromTableState();
+   //TestSettingAdalineInputsFromTableState();
+   TestGameKernel();
    return 0;
+}
+
+void TestGameKernel()
+{
+   Blackjack::Game acesEleven;
+   int gameTurns = 1;
+
+   while (acesEleven.GameInProgress())
+   {
+      std::cout << "Turn: " << gameTurns++ << std::endl;
+
+      // auto-stand on 18
+      if (acesEleven.GetCurrentTableState().GetSumOfPlayerCards() < 18)
+      {
+         acesEleven.PlayerHits();
+      }
+      else
+      {
+         acesEleven.PlayerStands();
+      }
+   }
+
+   std::cout << "=========" << std::endl;
+   srand(time(NULL));
+   Blackjack::Game acesOne(false);
+   gameTurns = 1;
+
+   while (acesOne.GameInProgress())
+   {
+      std::cout << "Turn: " << gameTurns++ << std::endl;
+
+      // auto-stand on 18
+      if (acesOne.GetCurrentTableState().GetSumOfPlayerCards() < 18)
+      {
+         acesOne.PlayerHits();
+      }
+      else
+      {
+         acesOne.PlayerStands();
+      }
+   }
 }
 
 void TestSettingAdalineInputsFromTableState()

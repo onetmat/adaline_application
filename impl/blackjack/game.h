@@ -54,6 +54,8 @@ namespace Blackjack
       inline void DealToDealer(bool currentCardShowing = false)
       {
          const PlayingCards::Card& c = deck.DrawCard();
+         std::cout << "Deal dealer a " << c.GetDenomination()
+            << std::endl;
          if (currentCardShowing)
          {
             currentTableState.SetDealerCardShowing(c);
@@ -79,6 +81,8 @@ namespace Blackjack
       inline void DealToPlayer()
       {
          const PlayingCards::Card& c = deck.DrawCard();
+         std::cout << "Deal player a " << c.GetDenomination()
+            << std::endl;
          currentTableState.DealCardToPlayer(c);
       }
 
