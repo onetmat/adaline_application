@@ -13,6 +13,10 @@ int main(int argc, char **argv)
    PlayingCards::Deck d;
 
    d.PrintDeckInfo();
+   d.Shuffle();
+   d.Shuffle();
+   d.Shuffle();
+   d.PrintDeckInfo();
    return 0;
 }
 
