@@ -13,6 +13,7 @@ void TeachAdalineT();
 void TestDrawingCards();
 void TestSettingAdalineInputsFromTableState();
 void TestGameKernel();
+void TestAdalineAdapter();
 
 int main(int argc, char **argv)
 {
