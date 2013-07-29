@@ -32,19 +32,32 @@ void TestAdalineAdapter()
 {
    Blackjack::AdalineAdapter adapter;
 
-   PrintWeightVector(adapter.GetAdaline());
-
-   adapter.PlayGameWithAcesAsEleven();
-   PrintWeightVector(adapter.GetAdaline());
-
-   adapter.PunishOrRewardPlayer();
-   PrintWeightVector(adapter.GetAdaline());
-
    for (int i = 0; i < 20; ++i)
    {
       adapter.PlayGameWithAcesAsEleven();
       adapter.PunishOrRewardPlayer();
    }
+
+   std::cout << "After twenty games, win pct is: "
+      << adapter.GetPercentGamesWon() << std::endl;
+   for (int i = 0; i < 20; ++i)
+   {
+      adapter.PlayGameWithAcesAsEleven();
+      adapter.PunishOrRewardPlayer();
+   }
+
+   std::cout << "After twenty more games, win pct is: "
+      << adapter.GetPercentGamesWon() << std::endl;
+
+   for (int i = 0; i < 100; ++i)
+   {
+      adapter.PlayGameWithAcesAsEleven();
+      adapter.PunishOrRewardPlayer();
+   }
+
+   std::cout << "After 140 games, win pct is: "
+      << adapter.GetPercentGamesWon() << std::endl;
+
    PrintWeightVector(adapter.GetAdaline());
 }
 
