@@ -37,11 +37,27 @@ Game::Game(bool acesCountAsEleven) : currentTableState(acesCountAsEleven)
    DealToDealer(true);
    DealToDealer();
 
-   // Now deal wo cards to the player
+   // Now deal two cards to the player
    DealToPlayer();
    DealToPlayer();
 
-   state = IN_PROGRESS;
+   // Did player Blackjack?
+   if (currentTableState.GetSumOfPlayerCards() == BlackJackSum)
+   {
+      // Did the dealer?
+      if (dealerSum != BlackJackSum)
+      {
+         state = PLAYER_WON;
+      }
+      else
+      {
+         state = PUSH;
+      }
+   }
+   else
+   {
+      state = IN_PROGRESS;
+   }
 }
 
 void Game::PlayerHits()
@@ -70,7 +86,7 @@ void Game::PlayerHits()
       else if (playerSum == BlackJackSum)
       {
 #ifdef DEBUG_GAME
-         std::cout << "PLAYER BLACKJACK" << std::endl;
+         std::cout << "PLAYER AT 21" << std::endl;
 #endif
          state = PLAYER_WON;
       }
