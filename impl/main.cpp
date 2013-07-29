@@ -6,10 +6,17 @@
 #include "carddeck/deck.h"
 
 void TeachAdalineT();
+void TestDrawingCards();
 
 int main(int argc, char **argv)
 {
    //Shapes::TeachAllShapes();
+   TestDrawingCards();
+   return 0;
+}
+
+void TestDrawingCards()
+{
    PlayingCards::Deck d;
 
    d.PrintDeckInfo();
@@ -17,7 +24,37 @@ int main(int argc, char **argv)
    d.Shuffle();
    d.Shuffle();
    d.PrintDeckInfo();
-   return 0;
+
+   std::cout << "Drawing cards" << std::endl;
+   for( int i = 0; i < 5; ++i)
+   {
+      const PlayingCards::Card &c = d.DrawCard();
+      std::cout << "Card has suit (numeral): " << c.GetSuit() << std::endl;
+
+      if (c.IsNumeric())
+      {
+         std::cout << "Card is numeric with value: " << c.GetNumericValue()
+            << std::endl;
+      }
+      else
+      {
+         std::cout << "Card is ";
+         if (c.IsAce())
+         {
+            std::cout << "an Ace: " << c.GetDenomination();
+         }
+         else if (c.IsFaceCard())
+         {
+            std::cout << "a face card: " << c.GetDenomination();
+         }
+         else
+         {
+            std::cout << "a Problem.";
+         }
+         std::cout << std::endl;
+      }
+      
+   }
 }
 
 void PrintWeightVector(const CompIntel::Adaline& adaline)

@@ -6,14 +6,18 @@
 
 using namespace PlayingCards;
 
-static char denoms[13] =
+static const int deckSize = 52;
+static const int cardsPerSuit = 13;
+static const int halfDeckSize = 26;
+
+static char denoms[cardsPerSuit] =
    { 'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
 
 Deck::Deck()
 {
-   deck.reserve(52);
+   deck.reserve(deckSize);
    // Four suits, one card each of A,2,3...Q,K per suit
-   for (int i = 0; i < 13; ++i)
+   for (int i = 0; i < cardsPerSuit; ++i)
    {
       deck.push_back(Card(HEARTS, denoms[i]));
       deck.push_back(Card(SPADES, denoms[i]));
@@ -40,7 +44,7 @@ void Deck::Shuffle()
 
    // also need two variables (one for each "sub-pile")
    int pileIndex1 = 0, pileIndex2 = 0; // both can range [0, 25]
-      // pileIndex2's actual index is x+26
+      // pileIndex2's actual index is x+halfDeckSize
 
    // seed random number generator for good measure
    srand(time(NULL));
@@ -48,7 +52,7 @@ void Deck::Shuffle()
    int randomPile = 0; // used to determine which pile
                        // will have it's next card taken
 
-   while (pileIndex1 < 26 && pileIndex2 < 26)
+   while (pileIndex1 < halfDeckSize && pileIndex2 < halfDeckSize)
    {
       // 3) randomly pick a pile
       // 4) and put its top card into the new deck (on top)
@@ -57,7 +61,7 @@ void Deck::Shuffle()
       // if > 5, then pick pile 2
       if (randomPile >= 5)
       {
-         deck.push_back(tmpPile[pileIndex2 + 26]);
+         deck.push_back(tmpPile[pileIndex2 + halfDeckSize]);
          pileIndex2 += 1;
       }
       else
@@ -67,14 +71,14 @@ void Deck::Shuffle()
          pileIndex1 += 1;
       }
    }
-   while (pileIndex1 < 26)
+   while (pileIndex1 < halfDeckSize)
    {
       deck.push_back(tmpPile[pileIndex1]);
       pileIndex1 += 1;
    }
-   while (pileIndex2 < 26)
+   while (pileIndex2 < halfDeckSize)
    {
-      deck.push_back(tmpPile[pileIndex2 + 26]);
+      deck.push_back(tmpPile[pileIndex2 + halfDeckSize]);
       pileIndex2 += 1;
    }
 
