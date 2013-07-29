@@ -31,7 +31,7 @@ namespace Blackjack
       // Method enocdes the current state into the referenced
       // adaline object per "Punish/Reward..."
       // Does check for valid number of signals, etc.
-      void SetAdalineInputs(CompIntel::Adaline& tgt);
+      void SetAdalineInputs(CompIntel::Adaline& tgt) const;
 
       // Retrieve the current sum of cards delt to the player
       // if the player has > 21, then the round is over
@@ -40,7 +40,7 @@ namespace Blackjack
 
       // Convert the character representation of the showing dealer card
       // to a number that allows an iterative set of an Adaline.
-      inline int DealerToAdalineInputs()
+      inline int DealerToAdalineInputs() const
       {
          // from the source paper w/r/t dealer cards
          // A, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -61,7 +61,7 @@ namespace Blackjack
 
       // Convert the current sum of all cards delt the player
       // into a number of signals to set into the adaptive player.
-      int PlayerCountToAdalineInputs()
+      int PlayerCountToAdalineInputs() const
       {
          // From the source material
          // <12, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21

@@ -46,8 +46,6 @@ void Deck::Shuffle()
    int pileIndex1 = 0, pileIndex2 = 0; // both can range [0, 25]
       // pileIndex2's actual index is x+halfDeckSize
 
-   // seed random number generator for good measure
-   srand(time(NULL));
    // 2) then while either pile still has cards
    int randomPile = 0; // used to determine which pile
                        // will have it's next card taken

@@ -71,7 +71,7 @@ void TableState::DealCardToPlayer(const PlayingCards::Card& c)
    // else don't do anything
 }
 
-void TableState::SetAdalineInputs(CompIntel::Adaline& tgt)
+void TableState::SetAdalineInputs(CompIntel::Adaline& tgt) const
 {
    // for this to work, the adaline must be setup for at least 20
    // signals
