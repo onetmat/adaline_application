@@ -16,7 +16,7 @@ Adaline::Adaline(unsigned int numSignals)
    SetRandomWeights();
    outputSignal = 0.0;
    learningRate = 1.0;
-   inputSignals[0] = 1.0;
+   inputSignals[0] = 1;
 }
 
 Adaline::~Adaline()

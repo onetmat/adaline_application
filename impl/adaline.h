@@ -11,6 +11,16 @@ namespace CompIntel
       Adaline(unsigned int numSignals);
       ~Adaline();
 
+      // Set all signals to 0
+      inline void ClearInputSignals()
+      {
+         // start at 1, zero is the bias
+         for (int i = 1; i < numberOfInputs; ++i)
+         {
+            inputSignals[i] = 0;
+         }
+      }
+
       // Allows individual signals to be set.
       void SetInputSignal(unsigned int signalIndex, char value);
 
@@ -41,6 +51,12 @@ namespace CompIntel
       inline const unsigned int GetNumberOfWeights() const
       {
          return numberOfInputs;
+      }
+      inline const unsigned int GetNumberOfInputs() const
+      {
+         // Only return the number of inputs that can be controlled
+         // (directly set)
+         return numberOfInputs - 1;
       }
 
       // Calculate the output signal based on the current input

@@ -4,15 +4,22 @@
 #include "shapes.h"
 
 #include "carddeck/deck.h"
+#include "blackjack/gamestate.h"
 
 void TeachAdalineT();
 void TestDrawingCards();
+void TestSettingAdalineInputsFromGameState();
 
 int main(int argc, char **argv)
 {
    //Shapes::TeachAllShapes();
    TestDrawingCards();
    return 0;
+}
+
+void TestSettingAdalineInputsFromGameState()
+{
+   
 }
 
 void TestDrawingCards()

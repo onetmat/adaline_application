@@ -22,6 +22,12 @@ namespace PlayingCards
       {
       }
 
+      Card(const Card& rhs)
+      {
+         suit = rhs.suit;
+         denomination = rhs.denomination;
+      }
+
       ~Card() {};
 
       // Allow read acces to private variables.
