@@ -12,14 +12,14 @@ namespace Blackjack
    {
    public:
       AdalineAdapter();
-      ~AdalineAdapter() { delete lastGame; }
+      ~AdalineAdapter() { }
 
       // Play a game of blackjack
       void PlayGameWithAcesAsEleven();
       void PlayGameWithAcesAsOne();
 
       // Get details of the last game
-      inline const Game* GetLastGame() const { return lastGame; }
+      inline const Game GetLastGame() const { return lastGame; }
 
       // Get the adaline
       inline const CompIntel::Adaline& GetAdaline() const
@@ -59,7 +59,7 @@ namespace Blackjack
          return quantizedSignal;
       }
 
-      Game* lastGame;
+      Game lastGame;
       unsigned int gamesWon;
       unsigned int gamesPlayed; // but not tied
 

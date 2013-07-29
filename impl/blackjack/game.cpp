@@ -49,6 +49,11 @@ void Game::Reset(bool acesCountAsEleven)
    DealToPlayer();
    DealToPlayer();
 
+#ifdef DEBUG_GAME
+   std::cout << "END INITIAL DEALS" << std::endl;
+
+#endif
+
    // Did player Blackjack?
    if (currentTableState.GetSumOfPlayerCards() == BlackJackSum)
    {
