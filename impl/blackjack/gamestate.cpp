@@ -4,7 +4,9 @@
 #include "../adaline.h"
 #include "../carddeck/deck.h"
 
-using namespace BlackJack;
+#undef DEBUG_GAMESTATE
+
+using namespace Blackjack;
 
 static const int BlackjackSignalCount = 20;
 static const int IndexForPlayerSignals = 10;
@@ -14,7 +16,7 @@ GameState::GameState(bool acesAreEleven)
 {
    aceCountsAsEleven = acesAreEleven;
    dealerCardShowing = '0'; // intentionally invalid
-   sumOfPlayerCards = -1; // intentionally invalid
+   sumOfPlayerCards = 0;
 }
 
 GameState::GameState(const GameState& rhs)
@@ -73,7 +75,7 @@ void GameState::SetAdalineInputs(CompIntel::Adaline& tgt)
 {
    // for this to work, the adaline must be setup for at least 20
    // signals
-   if (tgt.GetNumberOfInputs() > BlackjackSignalCount)
+   if (tgt.GetNumberOfInputs() >= BlackjackSignalCount)
    {
       // The signals need to be cleared each round (linearly independent)
       tgt.ClearInputSignals();
@@ -82,12 +84,15 @@ void GameState::SetAdalineInputs(CompIntel::Adaline& tgt)
       int adalineInputsForDealer = DealerToAdalineInputs();
 
       // set dealer signals (first 9)
+
+#ifdef DEBUG_GAMESTATE
       // debugging
       std::cout << "Because dealer showing: " << dealerCardShowing
          << std::endl;
       std::cout << "About to set the first " << adalineInputsForDealer
          << " signals to Adaline." << std::endl;
-      for (int i = 0; i < adalineInputsForDealer; +i)
+#endif
+      for (int i = 0; i < adalineInputsForDealer; ++i)
       {
          tgt.SetInputSignal(i, 1);
       }
@@ -95,11 +100,12 @@ void GameState::SetAdalineInputs(CompIntel::Adaline& tgt)
       // next, determine signals for player card sum
       int playerCardSumSignals = PlayerCountToAdalineInputs();
 
+#ifdef DEBUG_GAMESTATE
       std::cout << "Because player sum is: " << sumOfPlayerCards
          << std::endl;
       std::cout << "About to set the next " << playerCardSumSignals
          << " signals to Adaline." << std::endl;
-
+#endif
       for (int i = IndexForPlayerSignals;
             i < IndexForPlayerSignals + playerCardSumSignals; ++i)
       {

@@ -13,13 +13,38 @@ void TestSettingAdalineInputsFromGameState();
 int main(int argc, char **argv)
 {
    //Shapes::TeachAllShapes();
-   TestDrawingCards();
+   //TestDrawingCards();
+   TestSettingAdalineInputsFromGameState();
    return 0;
 }
 
 void TestSettingAdalineInputsFromGameState()
 {
-   
+   PlayingCards::Card dealerShowingOne(PlayingCards::HEARTS, 'A');
+   PlayingCards::Card playerCardOneA(PlayingCards::SPADES, '8');
+   PlayingCards::Card playerCardTwoA(PlayingCards::SPADES, 'K');
+
+   Blackjack::GameState stateOne;
+   CompIntel::Adaline player(20);
+
+   stateOne.SetDealerCardShowing(dealerShowingOne);
+   stateOne.DealCardToPlayer(playerCardOneA);
+   stateOne.DealCardToPlayer(playerCardTwoA);
+
+   stateOne.SetAdalineInputs(player);
+     
+
+   PlayingCards::Card dealerShowingTwo(PlayingCards::HEARTS, '7');
+   PlayingCards::Card playerCardOneB(PlayingCards::SPADES, 'A');
+   PlayingCards::Card playerCardTwoB(PlayingCards::SPADES, '2');
+
+   Blackjack::GameState stateTwo(true);
+
+   stateTwo.SetDealerCardShowing(dealerShowingTwo);
+   stateTwo.DealCardToPlayer(playerCardOneB);
+   stateTwo.DealCardToPlayer(playerCardTwoB);
+
+   stateTwo.SetAdalineInputs(player);
 }
 
 void TestDrawingCards()

@@ -1,6 +1,6 @@
 
 main: adaline.o shapes.o deck.o gamestate.o
-	g++ main.cpp adaline.o shapes.o deck.o
+	g++ main.cpp adaline.o shapes.o deck.o gamestate.o
 
 adaline.o:
 	g++ -c -o $@ adaline.cpp

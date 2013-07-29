@@ -11,7 +11,7 @@ namespace PlayingCards
    class Card;
 }
 
-namespace BlackJack
+namespace Blackjack
 {
    // GameState tracks the three input variables
    // from Widrow, et. al, "Punish/Reward..."
