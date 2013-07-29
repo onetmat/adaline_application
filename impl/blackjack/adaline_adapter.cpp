@@ -4,7 +4,7 @@
 #include "tablestate.h"
 #include "adaline_adapter.h"
 
-#define DEBUG_ADAPTER
+#undef DEBUG_ADAPTER
 
 using namespace Blackjack;
 

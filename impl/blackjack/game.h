@@ -5,7 +5,7 @@
 
 #include "../carddeck/deck.h" // need this full #include for vector
 
-#define DEBUG_GAME
+#undef DEBUG_GAME
 
 namespace Blackjack
 {
