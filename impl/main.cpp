@@ -43,6 +43,17 @@ void TestGameKernel()
       }
    }
 
+   if (acesEleven.PlayerWonGame())
+   {
+      std::cout << "Player won!" << std::endl;
+   }
+   else
+   {
+      std::cout << "Player did not win." << std::endl;
+   }
+
+   std::cout << "Table states in history: "
+      << acesEleven.GetTableStateHistory().size() << std::endl;
    std::cout << "=========" << std::endl;
    srand(time(NULL));
    Blackjack::Game acesOne(false);
@@ -62,6 +73,16 @@ void TestGameKernel()
          acesOne.PlayerStands();
       }
    }
+   if (acesOne.PlayerWonGame())
+   {
+      std::cout << "Player won!" << std::endl;
+   }
+   else
+   {
+      std::cout << "Player did not win." << std::endl;
+   }
+   std::cout << "Table states in history: "
+      << acesOne.GetTableStateHistory().size() << std::endl;
 }
 
 void TestSettingAdalineInputsFromTableState()

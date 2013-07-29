@@ -61,13 +61,17 @@ void Game::PlayerHits()
       {
          // player just lost
          state = PLAYER_LOST;
+#ifdef DEBUG_GAME
          std::cout << "PLAYER BUSTS WITH SCORE OF: " << playerSum
             << std::endl;
+#endif
       }
       // if not, check to see if they just won
       else if (playerSum == BlackJackSum)
       {
+#ifdef DEBUG_GAME
          std::cout << "PLAYER BLACKJACK" << std::endl;
+#endif
          state = PLAYER_WON;
       }
 
@@ -104,32 +108,43 @@ void Game::PlayDealer()
    {
       // and has higher sum than player
       int playerSum = currentTableState.GetSumOfPlayerCards();
-
+#ifdef DEBUG_GAME
       std::cout << "Player has: " << playerSum << ", Dealer has: "
          << dealerSum << std::endl;
+#endif
       if (dealerSum > playerSum)
       {
          // player loses
          state = PLAYER_LOST;
+#ifdef DEBUG_GAME
          std::cout << "PLAYER LOSES";
+#endif
       }
       // else if the player has a higher sum
       else if (playerSum > dealerSum)
       {
          state = PLAYER_WON;
+#ifdef DEBUG_GAME
          std::cout << "PLAYER WINS";
+#endif
       }
       else
       {
          // game is a push and will be discarded
          state = PUSH;
+#ifdef DEBUG_GAME
          std::cout << "GAME IS A PUSH";
+#endif
       }
+#ifdef DEBUG_GAME
       std::cout << std::endl;
+#endif
    }
    else
    {
+#ifdef DEBUG_GAME
       std::cout << "Dealer busts with sum of: " << dealerSum << std::endl;
+#endif
       state = PLAYER_WON;
    }
 }

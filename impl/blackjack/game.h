@@ -5,6 +5,8 @@
 
 #include "../carddeck/deck.h" // need this full #include for vector
 
+#undef DEBUG_GAME
+
 namespace Blackjack
 {
    class TableState;
@@ -54,8 +56,10 @@ namespace Blackjack
       inline void DealToDealer(bool currentCardShowing = false)
       {
          const PlayingCards::Card& c = deck.DrawCard();
+#ifdef DEBUG_GAME
          std::cout << "Deal dealer a " << c.GetDenomination()
             << std::endl;
+#endif
          if (currentCardShowing)
          {
             currentTableState.SetDealerCardShowing(c);
@@ -81,8 +85,10 @@ namespace Blackjack
       inline void DealToPlayer()
       {
          const PlayingCards::Card& c = deck.DrawCard();
+#ifdef DEBUG_GAME
          std::cout << "Deal player a " << c.GetDenomination()
             << std::endl;
+#endif
          currentTableState.DealCardToPlayer(c);
       }
 
