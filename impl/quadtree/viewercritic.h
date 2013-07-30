@@ -4,6 +4,8 @@
 #include <cmath>
 #include <limits>
 
+#undef DEBUG_VIEW_CRITIC
+
 namespace CompGeo
 {
    // Define a "critic" for Quadtrees
@@ -24,15 +26,20 @@ namespace CompGeo
       // bits
       unsigned int loopStop = sizeof(Quadtree::LengthType) * 4;
 
+#ifdef DEBUG_VIEW_CRITIC
       std::cout << "Checking for " << length << std::endl;
       std::cout << "type eps: " << typeEpsilon << std::endl;
+#endif
 
       for (unsigned int i = 1; i <= loopStop; ++i)
       {
          Quadtree::LengthType lengthInterval = pow(2, i);
 
-         if ((lengthInterval - length) < typeEpsilon)
+         if ((lengthInterval - length) <= typeEpsilon)
          {
+#ifdef DEBUG_VIEW_CRITIC
+            std::cout << "Suitable at " << length << std::endl;
+#endif
             suitable = true;
          }
          // Don't let this loop go on if not necessary
