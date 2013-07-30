@@ -77,8 +77,8 @@ namespace CompGeo
       // assign meaning to the quantized output
       enum QuantizedOutput
       {
-         EXTEND_BORDER = 1,
-         STOP = -1
+         EXTEND_BORDER = -1,
+         STOP = 1
       };
 
       // this adaline will examine the length of the root node
