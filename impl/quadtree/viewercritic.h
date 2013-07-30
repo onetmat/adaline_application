@@ -24,6 +24,9 @@ namespace CompGeo
       // bits
       unsigned int loopStop = sizeof(Quadtree::LengthType) * 4;
 
+      std::cout << "Checking for " << length << std::endl;
+      std::cout << "type eps: " << typeEpsilon << std::endl;
+
       for (unsigned int i = 1; i <= loopStop; ++i)
       {
          Quadtree::LengthType lengthInterval = pow(2, i);

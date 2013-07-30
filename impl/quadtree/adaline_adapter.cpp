@@ -3,7 +3,7 @@
 #include "../adaline.h"
 #include "adaline_adapter.h"
 
-#define DEBUG_QUADTREE_ADAPTER
+#undef DEBUG_QUADTREE_ADAPTER
 
 using namespace CompGeo;
 

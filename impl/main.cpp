@@ -38,23 +38,48 @@ void TestQuadtreeAdapter()
    CompGeo::AdalineAdapter quadtreeHelper;
    quadtreeHelper.Reset(100);
 
-   int runs = 0;
+   unsigned int numPunishments = 0, numRewards = 0;
 
-   while (runs < 30)
+   int runs = 0;
+   int runIncr = 1000;
+   int runMult = 1;
+
+   char tryAgain = 'y';
+
+   std::cout << "About to start, after stats, press y to "
+      << " try again with "<< runIncr << " more runs or press n to quit"
+      << std::endl;
+      
+   // Print stat headers
+   std::cout << "Runs,Rewards,Punishments"
+      << std::endl;
+   while (tryAgain == 'y')
    {
-      quadtreeHelper.Reset(100);
-      quadtreeHelper.AdjustQuadtree();
-      if (CompGeo::IsQuadtreeSuitable(quadtreeHelper.GetQuadtree()))
+      runs = runIncr * runMult;
+      while (runs > 0)
       {
-         std::cout << "Reward!" << std::endl;
-         quadtreeHelper.RewardAdaline();
+         quadtreeHelper.Reset(100);
+         quadtreeHelper.AdjustQuadtree();
+         if (CompGeo::IsQuadtreeSuitable(quadtreeHelper.GetQuadtree()))
+         {
+            numRewards++;
+            quadtreeHelper.RewardAdaline();
+         }
+         else
+         {
+            numPunishments++;
+            quadtreeHelper.PunishAdaline();
+         }
+         runs--;
       }
-      else
-      {
-         std::cout << "Punish!" << std::endl;
-         quadtreeHelper.PunishAdaline();
-      }
-      runs++;
+      runs = runMult * runIncr; // reconstruct number of runs
+      std::cout << runs << "," << numRewards << "," << numPunishments
+         << std::endl;
+      // reset counters
+      numRewards = 0;
+      numPunishments = 0;
+      runMult++; // assures we'll do more runs than last time
+      std::cin >> tryAgain;
    }
 }
 
