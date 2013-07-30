@@ -35,8 +35,9 @@ int main(int argc, char **argv)
 
 void TestQuadtreeAdapter()
 {
+   unsigned int quadtreeLen = 514;
    CompGeo::AdalineAdapter quadtreeHelper;
-   quadtreeHelper.Reset(100);
+   quadtreeHelper.Reset(quadtreeLen);
 
    unsigned int numPunishments = 0, numRewards = 0;
 
@@ -58,7 +59,9 @@ void TestQuadtreeAdapter()
       runs = runIncr * runMult;
       while (runs > 0)
       {
-         quadtreeHelper.Reset(100);
+         // make sure to re-submit the original quadtree
+         // and clear the history since this is a new run
+         quadtreeHelper.Reset(quadtreeLen);
          quadtreeHelper.AdjustQuadtree();
          if (CompGeo::IsQuadtreeSuitable(quadtreeHelper.GetQuadtree()))
          {
