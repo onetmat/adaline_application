@@ -66,3 +66,10 @@ void AdalineAdapter::TeachAdaline(bool punishing)
          // invert the quantized output
       // feed the quantized output as the desired output
 }
+
+void AdalineAdapter::SetAdalineInputs()
+{
+   // foreach bit in the length field
+      // if the bit is set
+         // set that adaline signal
+}
