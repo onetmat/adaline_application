@@ -61,6 +61,9 @@ namespace CompGeo
 
       // Quantize the Adaline output using the function from
       // "Punish/Reward..."
+      // Note that this signum does NOT use the symbolic
+      // names from the output. The symbols only have meaning
+      // outside this method.
       inline int QuantizeAdalineOutput(double outputSignal)
       {
          int quantizedSignal = -1;
@@ -69,7 +72,14 @@ namespace CompGeo
             quantizedSignal = 1;
          }
          return quantizedSignal;
-      }      
+      }
+
+      // assign meaning to the quantized output
+      enum QuantizedOutput
+      {
+         EXTEND_BORDER = 1,
+         STOP = -1
+      };
 
       // this adaline will examine the length of the root node
       // and determine if this length will produce a quadtree

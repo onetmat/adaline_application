@@ -49,12 +49,10 @@ void AdalineAdapter::RewardAdaline()
 
 void AdalineAdapter::AdjustQuadtree()
 {
-   // 1 => extend the quadtree border by 1
-   // -1 => stop
-   int quantizedOutput = 1;
+   int quantizedOutput = EXTEND_BORDER;
    int iters = 0;
 
-   while (quantizedOutput == 1 && iters < 1000)
+   while (quantizedOutput == EXTEND_BORDER && iters < 1000)
    {
       // set the signals to the adaline
       SetAdalineInputs();
@@ -66,8 +64,11 @@ void AdalineAdapter::AdjustQuadtree()
 
 #endif
       // quantize the output
-      int quantizedOutput
+      quantizedOutput
          = QuantizeAdalineOutput(quadtreeJudge.GetOutputSignal());
+#ifdef DEBUG_QUADTREE_ADAPTER
+      std::cout << "Quantized: " << quantizedOutput << std::endl;
+#endif
 
       // save the current length in the history
       Quadtree::LengthType currentLength =
@@ -75,7 +76,7 @@ void AdalineAdapter::AdjustQuadtree()
 
       lengthHistory.push_back(currentLength);
       // and either adjust the size of the quadtree
-      if (quantizedOutput == 1)
+      if (quantizedOutput == EXTEND_BORDER)
       {
          currentQuadtree.SetLengthOfRootNode(currentLength + 1);
 #ifdef DEBUG_QUADTREE_ADAPTER
