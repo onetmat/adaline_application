@@ -56,6 +56,21 @@ namespace CompGeo
       // Actual implementation of teach routine.
       void TeachAdaline(bool punishing);
 
+      // Converts the length to appropriate adaline input
+      void SetAdalineInputs();
+
+      // Quantize the Adaline output using the function from
+      // "Punish/Reward..."
+      inline int QuantizeAdalineOutput(double outputSignal)
+      {
+         int quantizedSignal = -1;
+         if (outputSignal >= 0.0)
+         {
+            quantizedSignal = 1;
+         }
+         return quantizedSignal;
+      }      
+
       // this adaline will examine the length of the root node
       // and determine if this length will produce a quadtree
       // suitable for the map viewer.
