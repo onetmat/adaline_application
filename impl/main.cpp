@@ -9,6 +9,7 @@
 #include "blackjack/tablestate.h"
 #include "blackjack/game.h"
 #include "blackjack/adaline_adapter.h"
+#include "quadtree/adaline_adapter.h"
 
 void PrintWeightVector(const CompIntel::Adaline& adaline);
 
@@ -16,7 +17,8 @@ void TeachAdalineT();
 void TestDrawingCards();
 void TestSettingAdalineInputsFromTableState();
 void TestGameKernel();
-void TestAdalineAdapter();
+void TestBlackjackAdapter();
+void TestQuadtreeAdapter();
 
 int main(int argc, char **argv)
 {
@@ -24,11 +26,19 @@ int main(int argc, char **argv)
    //TestDrawingCards();
    //TestSettingAdalineInputsFromTableState();
    //TestGameKernel();
-   TestAdalineAdapter();
+   //TestBlackjackAdapter();
+   TestQuadtreeAdapter();
    return 0;
 }
 
-void TestAdalineAdapter()
+void TestQuadtreeAdapter()
+{
+   CompGeo::AdalineAdapter quadtreeHelper;
+   quadtreeHelper.Reset(100);
+   quadtreeHelper.AdjustQuadtree();
+}
+
+void TestBlackjackAdapter()
 {
    Blackjack::AdalineAdapter adapter;
 

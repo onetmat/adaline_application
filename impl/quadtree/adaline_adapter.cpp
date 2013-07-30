@@ -49,11 +49,48 @@ void AdalineAdapter::RewardAdaline()
 
 void AdalineAdapter::AdjustQuadtree()
 {
-   // set the signals to the adaline
-   // allow it to weigh the inputs
-   // quantize the output
-   // and either adjust the size of the quadtree
-   // or stop if the adaline thinks all is well
+   // 1 => extend the quadtree border by 1
+   // -1 => stop
+   int quantizedOutput = 1;
+   int iters = 0;
+
+   while (quantizedOutput == 1 && iters < 1000)
+   {
+      // set the signals to the adaline
+      SetAdalineInputs();
+      // allow it to weigh the inputs
+      quadtreeJudge.WeighInputs();
+#ifdef DEBUG_QUADTREE_ADAPTER
+      std::cout << "Output signal from adaline: "
+         << quadtreeJudge.GetOutputSignal() << std::endl;
+
+#endif
+      // quantize the output
+      int quantizedOutput
+         = QuantizeAdalineOutput(quadtreeJudge.GetOutputSignal());
+
+      // save the current length in the history
+      Quadtree::LengthType currentLength =
+         currentQuadtree.GetLengthOfRootNode();
+
+      lengthHistory.push_back(currentLength);
+      // and either adjust the size of the quadtree
+      if (quantizedOutput == 1)
+      {
+         currentQuadtree.SetLengthOfRootNode(currentLength + 1);
+#ifdef DEBUG_QUADTREE_ADAPTER
+         std::cout << "Set new length to " << currentLength + 1
+            << std::endl;
+#endif
+      }
+      // or stop if the adaline thinks all is well
+
+      // update the number of iterations just in case.
+      ++iters;
+   }
+#ifdef DEBUG_QUADTREE_ADAPTER
+   std::cout << "Quit after " << iters << " iterations." << std::endl;
+#endif
 }
 
 void AdalineAdapter::TeachAdaline(bool punishing)
@@ -69,7 +106,23 @@ void AdalineAdapter::TeachAdaline(bool punishing)
 
 void AdalineAdapter::SetAdalineInputs()
 {
+   // clear all signals to the adaline
+   quadtreeJudge.ClearInputSignals();
+
+   // store the quadtree length for easy access
+   Quadtree::LengthType rootNodeLen
+      = currentQuadtree.GetLengthOfRootNode();
    // foreach bit in the length field
+   for (int i = 0; i < quadtreeJudge.GetNumberOfInputs(); ++i)
+   {
       // if the bit is set
+      if (rootNodeLen >> i & 0x1)
+      {
          // set that adaline signal
+         quadtreeJudge.SetInputSignal(i, 1);
+#ifdef DEBUG_QUADTREE_ADAPTER
+         std::cout << "Setting signal " << i << std::endl;
+#endif
+      }
+   }
 }
