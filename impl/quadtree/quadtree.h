@@ -8,6 +8,7 @@ namespace CompGeo
    class Quadtree
    {
    public:
+      //typedef double LengthType;
       typedef unsigned int LengthType;
       Quadtree() { rootNodeLength = 0; }
       ~Quadtree() {}
