@@ -11,6 +11,8 @@
 #include "blackjack/adaline_adapter.h"
 #include "quadtree/adaline_adapter.h"
 
+#include "quadtree/viewercritic.h"
+
 void PrintWeightVector(const CompIntel::Adaline& adaline);
 
 void TeachAdalineT();
@@ -35,7 +37,25 @@ void TestQuadtreeAdapter()
 {
    CompGeo::AdalineAdapter quadtreeHelper;
    quadtreeHelper.Reset(100);
-   quadtreeHelper.AdjustQuadtree();
+
+   int runs = 0;
+
+   while (runs < 30)
+   {
+      quadtreeHelper.Reset(100);
+      quadtreeHelper.AdjustQuadtree();
+      if (CompGeo::IsQuadtreeSuitable(quadtreeHelper.GetQuadtree()))
+      {
+         std::cout << "Reward!" << std::endl;
+         quadtreeHelper.RewardAdaline();
+      }
+      else
+      {
+         std::cout << "Punish!" << std::endl;
+         quadtreeHelper.PunishAdaline();
+      }
+      runs++;
+   }
 }
 
 void TestBlackjackAdapter()

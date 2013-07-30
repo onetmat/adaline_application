@@ -57,7 +57,7 @@ namespace CompGeo
       void TeachAdaline(bool punishing);
 
       // Converts the length to appropriate adaline input
-      void SetAdalineInputs();
+      void SetAdalineInputs(Quadtree::LengthType input);
 
       // Quantize the Adaline output using the function from
       // "Punish/Reward..."
