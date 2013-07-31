@@ -1,6 +1,8 @@
 #ifndef ADALINE_H_
 #define ADALINE_H_
 
+#include <iostream>
+
 namespace CompIntel
 {
    // Implements Widrow and Hoff's ADALINE circuit
@@ -66,6 +68,17 @@ namespace CompIntel
       // Apply the learning algorithm detailed in Widrow and Hoff's
       // "Adaptive Switching Circuits"
       void Learn(double desiredOutput);
+
+      // Print headers that correspond to the "detail" outputs
+      // Input 0, input 1, ... input X, weight 0, weight 1, ... weight X
+      // ending with Output signal
+      void PrintCSVHeaders(std::ostream& stream) const;
+
+      // Print the state of the current input vector
+      // the current weight vector
+      // and the current output signal value
+      // in a format consistent with the CSV format.
+      void PrintDetailsCSV(std::ostream& stream) const;
 
    private:
       // Seed the random number generator and assign random

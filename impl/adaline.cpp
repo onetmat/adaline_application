@@ -74,3 +74,39 @@ void Adaline::SetRandomWeights()
       weights[i] = (double)rand() / rand();
    }
 }
+
+void Adaline::PrintCSVHeaders(std::ostream& stream) const
+{
+   // this output includes bias input and weight
+   // first print input signals
+   for (unsigned int i = 0; i < numberOfInputs; ++i)
+   {
+      stream << "Input " << i << ",";
+   }
+
+   for (unsigned int i = 0; i < numberOfInputs; ++i)
+   {
+      stream << "Weight " << i << ",";
+   }
+
+   stream << "Output Signal";
+}
+
+void Adaline::PrintDetailsCSV(std::ostream& stream) const 
+{
+   // this output includes bias input and weight
+   // first print input signals
+   for (unsigned int i = 0; i < numberOfInputs; ++i)
+   {
+      stream << (unsigned int)inputSignals[i] << ",";
+   }
+
+   // next, weights
+   for (unsigned int i = 0; i < numberOfInputs; ++i)
+   {
+      stream << weights[i] << ",";
+   }
+
+   // finally, print the output signal
+   stream << outputSignal;
+}

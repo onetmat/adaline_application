@@ -28,8 +28,8 @@ int main(int argc, char **argv)
    //TestDrawingCards();
    //TestSettingAdalineInputsFromTableState();
    //TestGameKernel();
-   //TestBlackjackAdapter();
-   TestQuadtreeAdapter();
+   TestBlackjackAdapter();
+   //TestQuadtreeAdapter();
    return 0;
 }
 
@@ -93,6 +93,9 @@ void TestBlackjackAdapter()
    for (int i = 0; i < 20; ++i)
    {
       adapter.PlayGameWithAcesAsEleven();
+      const CompIntel::Adaline& adaline = adapter.GetAdaline();
+      adaline.PrintDetailsCSV(std::cout);
+      std::cout << std::endl;
       adapter.PunishOrRewardPlayer();
    }
 
