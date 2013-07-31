@@ -47,13 +47,14 @@ void TestQuadtreeAdapter()
 
    char tryAgain = 'y';
 
-   std::cout << "About to start, after stats, press y to "
-      << " try again with "<< runIncr << " more runs or press n to quit"
-      << std::endl;
-      
-   // Print stat headers
-   std::cout << "Runs,Rewards,Punishments"
-      << std::endl;
+   // first, print the interation header
+   std::cout << "Iteration,";
+
+   // next, print out the Adaline headers
+   const CompIntel::Adaline& adaline = quadtreeHelper.GetAdaline();
+
+   adaline.PrintCSVHeaders(std::cout);
+
    while (tryAgain == 'y')
    {
       runs = runIncr * runMult;
@@ -90,16 +91,13 @@ void TestBlackjackAdapter()
 {
    Blackjack::AdalineAdapter adapter;
 
-   unsigned int totalGames = 1000;
+   unsigned int totalGames = 5000;
 
    std::vector<double> pctGamesWon;
 
    const CompIntel::Adaline& adaline = adapter.GetAdaline();
    // print the "Iteration" csv header
    std::cout << "Iteration,";
-   // then print all inputs/weights from the adaline
-   adaline.PrintCSVHeaders(std::cout);
-
    // terminate with a newline
    std::cout << std::endl;
 
@@ -108,22 +106,19 @@ void TestBlackjackAdapter()
    {
       const CompIntel::Adaline& adaline = adapter.GetAdaline();
       // and for each
-      // print the iteration
-      std::cout << i+1 << ",";
       // if this game is a multiple of 20
       if (i != 0 && i % 20 == 0)
       {
+         // print the iteration
+         std::cout << i+1 << ",";
+         std::cout << adapter.GetPercentGamesWon() << std::endl;
          // store the % win
          pctGamesWon.push_back(adapter.GetPercentGamesWon());
       }
       // and play a game
       adapter.PlayGameWithAcesAsEleven();
-      // print the adaline stats
-      adaline.PrintDetailsCSV(std::cout);
       // and punish/reward
       adapter.PunishOrRewardPlayer();
-      // then print a newline
-      std::cout << std::endl;
    }
 
    // then, print the % win for every twenty wins

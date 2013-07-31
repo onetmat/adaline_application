@@ -46,6 +46,11 @@ namespace CompGeo
          return lengthHistory.size();
       }
 
+      inline const CompIntel::Adaline& GetAdaline() const
+      {
+         return quadtreeJudge;
+      }
+
       // Retrieve the state of the quadtree as it stands.
       inline const Quadtree& GetQuadtree() const
       {
