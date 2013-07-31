@@ -90,36 +90,53 @@ void TestBlackjackAdapter()
 {
    Blackjack::AdalineAdapter adapter;
 
-   for (int i = 0; i < 20; ++i)
+   unsigned int totalGames = 1000;
+
+   std::vector<double> pctGamesWon;
+
+   const CompIntel::Adaline& adaline = adapter.GetAdaline();
+   // print the "Iteration" csv header
+   std::cout << "Iteration,";
+   // then print all inputs/weights from the adaline
+   adaline.PrintCSVHeaders(std::cout);
+
+   // terminate with a newline
+   std::cout << std::endl;
+
+   // now, play totalGames of blackjack
+   for (unsigned int i = 0; i < totalGames; ++i)
    {
-      adapter.PlayGameWithAcesAsEleven();
       const CompIntel::Adaline& adaline = adapter.GetAdaline();
+      // and for each
+      // print the iteration
+      std::cout << i+1 << ",";
+      // if this game is a multiple of 20
+      if (i != 0 && i % 20 == 0)
+      {
+         // store the % win
+         pctGamesWon.push_back(adapter.GetPercentGamesWon());
+      }
+      // and play a game
+      adapter.PlayGameWithAcesAsEleven();
+      // print the adaline stats
       adaline.PrintDetailsCSV(std::cout);
+      // and punish/reward
+      adapter.PunishOrRewardPlayer();
+      // then print a newline
       std::cout << std::endl;
-      adapter.PunishOrRewardPlayer();
    }
 
-   std::cout << "After twenty games, win pct is: "
-      << adapter.GetPercentGamesWon() << std::endl;
-   for (int i = 0; i < 20; ++i)
+   // then, print the % win for every twenty wins
+   std::vector<double>::iterator pctWinIter;
+   for (pctWinIter = pctGamesWon.begin();
+      pctWinIter != pctGamesWon.end();
+      ++pctWinIter)
    {
-      adapter.PlayGameWithAcesAsEleven();
-      adapter.PunishOrRewardPlayer();
+      std::cout << *pctWinIter << ",";
    }
 
-   std::cout << "After twenty more games, win pct is: "
-      << adapter.GetPercentGamesWon() << std::endl;
-
-   for (int i = 0; i < 100; ++i)
-   {
-      adapter.PlayGameWithAcesAsEleven();
-      adapter.PunishOrRewardPlayer();
-   }
-
-   std::cout << "After 140 games, win pct is: "
-      << adapter.GetPercentGamesWon() << std::endl;
-
-   PrintWeightVector(adapter.GetAdaline());
+   // and terminate with a new line
+   std::cout << std::endl;
 }
 
 void TestGameKernel()
