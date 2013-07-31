@@ -50,9 +50,8 @@ void AdalineAdapter::RewardAdaline()
 void AdalineAdapter::AdjustQuadtree()
 {
    int quantizedOutput = EXTEND_BORDER;
-   int iters = 0;
 
-   while (quantizedOutput == EXTEND_BORDER && iters < 1000)
+   while (quantizedOutput == EXTEND_BORDER)
    {
       // set the signals to the adaline
       SetAdalineInputs(currentQuadtree.GetLengthOfRootNode());
@@ -85,9 +84,6 @@ void AdalineAdapter::AdjustQuadtree()
 #endif
       }
       // or stop if the adaline thinks all is well
-
-      // update the number of iterations just in case.
-      ++iters;
    }
 #ifdef DEBUG_QUADTREE_ADAPTER
    std::cout << "Quit after " << iters << " iterations." << std::endl;

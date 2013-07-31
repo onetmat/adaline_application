@@ -4,7 +4,7 @@
 #include <cmath>
 #include <limits>
 
-#define DEBUG_VIEW_CRITIC
+#undef DEBUG_VIEW_CRITIC
 
 namespace CompGeo
 {

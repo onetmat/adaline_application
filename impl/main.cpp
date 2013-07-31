@@ -28,62 +28,80 @@ int main(int argc, char **argv)
    //TestDrawingCards();
    //TestSettingAdalineInputsFromTableState();
    //TestGameKernel();
-   TestBlackjackAdapter();
-   //TestQuadtreeAdapter();
+   //TestBlackjackAdapter();
+   TestQuadtreeAdapter();
    return 0;
 }
 
 void TestQuadtreeAdapter()
 {
-   unsigned int quadtreeLen = 514;
+   static const int NumberOfTestLengths = 12;
+   CompGeo::Quadtree::LengthType quadtreeLengths[12]
+      =  { 100, 257, 1000, 23000,
+         14230, 129, 259, 800000,
+         32000, 124000, 5691, 2965};
    CompGeo::AdalineAdapter quadtreeHelper;
-   quadtreeHelper.Reset(quadtreeLen);
+   quadtreeHelper.Reset(quadtreeLengths[0]);
 
    unsigned int numPunishments = 0, numRewards = 0;
 
-   int runs = 0;
-   int runIncr = 1000;
-   int runMult = 1;
+   bool quadtreeAccepted = false;
 
-   char tryAgain = 'y';
+   int thisSideIterCnt = 0;
 
    // first, print the interation header
    std::cout << "Iteration,";
+
+   // then, the starting root node side length header
+   std::cout << "Root Node Side Length,";
 
    // next, print out the Adaline headers
    const CompIntel::Adaline& adaline = quadtreeHelper.GetAdaline();
 
    adaline.PrintCSVHeaders(std::cout);
 
-   while (tryAgain == 'y')
+   // terminate the header row
+   std::cout << std::endl;
+
+   for (int i = 0; i < NumberOfTestLengths; ++i)
    {
-      runs = runIncr * runMult;
-      while (runs > 0)
+      // reset the iteration counter
+      thisSideIterCnt = 0;
+      quadtreeAccepted = false;
+      // while the critic has not accepted this quadtree
+      while (quadtreeAccepted == false)
       {
-         // make sure to re-submit the original quadtree
-         // and clear the history since this is a new run
-         quadtreeHelper.Reset(quadtreeLen);
+         // then we'll try again
+         // update the iteration and side length entries
+         std::cout << thisSideIterCnt + 1 << ","
+            << quadtreeLengths[i] << ",";
+         // reset the size to the original
+         quadtreeHelper.Reset(quadtreeLengths[i]);
          quadtreeHelper.AdjustQuadtree();
+         // print the CSV info of the adaline
+         adaline.PrintDetailsCSV(std::cout);
+         // and terminate this line
+         std::cout << std::endl;
+
+         // submit the quadtree to the critic
+         const CompIntel::Adaline& adaline = quadtreeHelper.GetAdaline();
          if (CompGeo::IsQuadtreeSuitable(quadtreeHelper.GetQuadtree()))
          {
-            numRewards++;
+            // if this is acceptable, set the quit flag for this
+            // length
+            quadtreeAccepted = true;
             quadtreeHelper.RewardAdaline();
+            // and print an extra newline to delineate the number
+            // of learning cycles necessary for this length
+            std::cout << std::endl;
          }
          else
          {
-            numPunishments++;
             quadtreeHelper.PunishAdaline();
          }
-         runs--;
+
+         ++thisSideIterCnt;
       }
-      runs = runMult * runIncr; // reconstruct number of runs
-      std::cout << runs << "," << numRewards << "," << numPunishments
-         << std::endl;
-      // reset counters
-      numRewards = 0;
-      numPunishments = 0;
-      runMult++; // assures we'll do more runs than last time
-      std::cin >> tryAgain;
    }
 }
 
