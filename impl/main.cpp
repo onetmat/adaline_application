@@ -38,7 +38,7 @@ void TestQuadtreeAdapter()
    static const int NumberOfTestLengths = 12;
    CompGeo::Quadtree::LengthType quadtreeLengths[12]
       =  { 100, 257, 1000, 23000,
-         14230, 129, 259, 800000,
+         14230, 129, 259, 80000,
          32000, 124000, 5691, 2965};
    CompGeo::AdalineAdapter quadtreeHelper;
    quadtreeHelper.Reset(quadtreeLengths[0]);
