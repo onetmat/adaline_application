@@ -37,9 +37,9 @@ void TestQuadtreeAdapter()
 {
    static const int NumberOfTestLengths = 12;
    CompGeo::Quadtree::LengthType quadtreeLengths[12]
-      =  { 100, 257, 1000, 23000,
-         14230, 129, 259, 80000,
-         32000, 124000, 5691, 2965};
+      =  { 100, 257, 1000, 2000,
+         40, 15, 2100, 700,    // 80,000 doesn't converge
+         32000, 12400, 5691, 2965};
    CompGeo::AdalineAdapter quadtreeHelper;
    quadtreeHelper.Reset(quadtreeLengths[0]);
 
@@ -69,6 +69,7 @@ void TestQuadtreeAdapter()
       thisSideIterCnt = 0;
       quadtreeAccepted = false;
       // while the critic has not accepted this quadtree
+      quadtreeHelper.Reset(quadtreeLengths[i]);
       while (quadtreeAccepted == false)
       {
          // then we'll try again
@@ -76,7 +77,6 @@ void TestQuadtreeAdapter()
          std::cout << thisSideIterCnt + 1 << ","
             << quadtreeLengths[i] << ",";
          // reset the size to the original
-         quadtreeHelper.Reset(quadtreeLengths[i]);
          quadtreeHelper.AdjustQuadtree();
          // print the CSV info of the adaline
          adaline.PrintDetailsCSV(std::cout);
@@ -90,10 +90,12 @@ void TestQuadtreeAdapter()
             // if this is acceptable, set the quit flag for this
             // length
             quadtreeAccepted = true;
+            std::cout << "FOUND" << std::endl;
             quadtreeHelper.RewardAdaline();
             // and print an extra newline to delineate the number
-            // of learning cycles necessary for this length
-            std::cout << std::endl;
+            // of learning cycles necessary for this length,
+            // also print out the length value that worked
+            std::cout << quadtreeHelper.GetQuadtree().GetLengthOfRootNode() << std::endl;
          }
          else
          {
