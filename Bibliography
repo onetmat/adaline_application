@@ -1,0 +1,83 @@
+
+1) R. J. Meuth, ``GPUs Surpass Computers at Repetitive Calculations,'' \emph{IEEE Potentials}, Nov/Dec, 2007.
+	Summary of articles that have proved how utilization of GPUs on video cards can improve algorithm performance. Gives brief overview of major CI fields of study touched on by Wunsch and how they might also be improved by GPU utlization.
+
+2) J. H. Kim, et al., ``Intelligence Technology for Robots That Think,'' \emph{IEEE Compt. Intell. Mag.}, Aug, 2013.
+	Described iOA (Intelligence Operating Architecture) used to bring all forms of Robot Intelligence (initial focus of article) together. Gave specific examples of each type of intelligence, offering demonstrations of concepts through simulation. Provided multiple references to source math and brief mathematical overview of each application.
+
+3) D. Binkley, "Source Code Analysis: A Road Map,'' in \emph{Future Software Engineering}, Minneapolis, MN, 2007.
+	Provides an overview of current source code analysis techniques and identifies current challenges prohibiting further analysis. Overview provides a large number of references for further reading. Section two in particular provides interesting detail on particular source code analysis techniques, but not necessarily applications. Identifies three debugging techniques of particular interest and provides references for further reading.
+
+4) W. Blewitt, et al., ``Applicability of GPGPU Computing to Real-Time AI Solutions in Games,'' \emph{IEEE Trans. Comput. Intell. AI Games}..., to be published.
+	Summarizes major advances in algorithmic processing due to GPGPU applications throughout the gaming community, focusing on AI relevant to games. Briefly reviews comparisons of OpenCL, CUDA, and DirectCompute. Emphasized enhancements to Path finding, other general searching, Finite State Machines, and Line of Sight/Detection. Provides a dearth of references for addtional reading in all cases.
+
+5) C. M. Grinstead and J. Snell, ``Markov Chains,'' in \emph{Introduction to Probability}, 2nd ed. Boston, MA: FSF, 2006, ch. 11, sec. 1, pp. 405-416.
+	Introduction to Markov Chains with exercises and examples. Particular focus on matrix representation. Complete book available online at <http://http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/book.html>, retrieved on 25 August, 2013.
+
+6) P. Werbos, ``ADP: Goals, Opportunities and Principles,'' in \emph{Learning and Approximate Dynamic Programming}, New York, NY: Wiley, 2004, ch 1, pp. 1-37.
+	Description of ADP's application to reality and mathematical underpinnings. Defines reinforcement learning as maximization of a utility function over time, discounted by a particular value each iteration (clock tick, or value at a pre-selected time index). Many references to the work of John Von Neumann and first generation contemporaries discussed. Real-world examples include the "Clean Car" chip developed for the Ford Motor Company and efficient energy production, such as Space Solar Power. Limitations of straight dynamic programming and how approximation can help are discussed in detail, with clear definitions and examples of DP. Large portion of the second half are devoted to the Bellman equation.
+
+7) P. Werbos, ``Backpropagation Through Time: What It Does and How to Do It,'' \emph{Proc. IEEE}, vol. 78, pp. 1550-1560, Oct. 1990.
+	Full mathematical definition of Backpropagation Through Time with examples. Walks through all of the calculus required to understand what's going on, gives code examples of each piece, and puts all concepts together. Slow pace and dense reading. Referenced a book called "Parallel Distributed Processing" which, "...played a pivotal role in the development of the field."
+
+8) Michael Fairbank, et al., ``Simple and Fast Calculation of the Second-Order Gradients for Globalized Dual Heuristic Dynamic Programming in Neural Networks,''  \emph{IEEE Trans. Neural Netw.}, vol. 23, pp. 1671-1676, Oct. 2012.
+	 Describes an efficient method for forward propagating error, which apparently opposes backpropagation. No reference to Werbos' Backpropagation Through Time article is made, but several other Werbos articles are cited. The article mentions specifically that the algorithm being described refines the error function of a neural network. The authors offer psuedocode implementations and sample output as proof of their work. The focus shifts to particular ADP algorithms and how their second order derivative calculation algorithm reduces runtime complexity. This article reads almost like a Wikipedia article and many sources will have to be consulted. Referneced an article by F.-Y. Wang, H. Zhang, and D. Liu called "Adaptive dynamic programming; An introduction'' from IEEE Comput. Intell. Mag. (first reference). Probably worth a look.
+
+9) Bernard Widrow, et al., ``Punish/Reward: Learning with a Critic in Adaptive Threshold Systems,'' \emph{IEEE Trans. Syst. Man Cybern.}, vol. SMC-3, pp. 455-465, Sep. 1973.
+	Paper describes a physical punishment/reward learning circuit. Contains a complete example of teaching the circuit to play a simplified form of Blackjack. This paper lays an excellent foundation for reinforcement learning and provides a ground-up example that includes most aspects of integration, etc. All of the math involved is laid out and it gets a little intense at times.
+
+10) M. A. Boyacioglu, et al., ``Predicting bank financial failures using neural networks, support...,'' \emph{Expert Systems with Applications}, 2008.
+	Demonstrates use of multiple neural network models, and other techniques, to predict a bank failure. The opening sentence of section five most succinctly explains the methods employed. In the neural network case, the historical data used to train the networks comes from the Savings Deposit Insurance Fund of the country of Turkey.
+
+11) S.E. Taylor, et al., ``Temporal Semantics: An Adaptive Resonance Theory Approach,'' in \emph{Proc. of Int. Joint Conf. on Neural Netw.}, Atlanta, GA, 2009, pp. 3111-3117.
+	Articles describes an attempt to incorporate time into neural networks. The opening discussion about why is particularly worth reading. In short, memory, human and computer, has more meaning when associated with a persistent time model.
+
+========= ALL ABOVE THIS LINE HAVE BEEN PUT ON BLACKBOARD
+
+12) B. Widrow and M.E. Hoff, Jr., ``Adaptive Switching Circuits,'' IRE WESCON Convention Record, 4:96-104, August 1960.
+	Birth paper of Adaline. Paper provides a mathematical model for an adaptive ciruit, describes Adaline, and gives some sample applications.
+
+13) B. Widrow, J. McCool, and M. Ball, ``The Complex LMS Algorithm,'' Proceedings of the IEEE, 63(4):719-720, April 1975.
+	Derives and demonstrates how the LMS algorithm can be applied to complex numbers.
+
+14) B. Widrow, ``Adaline: Smarter than Sweet,'' Stanford Today, Autumn 1963.
+	Article provides a brief overview of several applications of Widrow's Adaline. The article briefly describes severtal research efforts at Stanford University utilizing Adaline circuits.
+
+15) B. Widrow, ``Adaptive Sampled-Data Systems --- A Statistical Theory of Adaptation,'' IRE WESCON Convention Record, 4:74-85, 1959.
+	This paper details the mathematical underpinnings of Adaline, but was published before the ``Adaptive Switching Circuits''. A lot of material from ``Adaptive Switching Circuits'' seems to have its origins in this paper.
+
+16) B. Widrow, ``Statistical Analysis of Amplitude-Quantized Sampled-Data Systems,'' AIEE Transactions on Applications and Industry, pp.1-14, January 1961
+	Defines Quantization and provides statistical analysis of quantizing a signal. Also details methods of dealing with the noise of physical quantizing units.
+
+17) B. Widrow, ``Thinking About Thinking: The Discovery of the LMS Algorithm,'' IEEE Signal Processing Magazine, 22(1):100-106, January 2005.
+	Retrospective view of the LMS Algorithm's discovery. This paper reads like a general summary of ``Adaptive Switching Circuits''.
+
+18) D. Rumelhart, B. Widrow and M.A. Lehr, ``The Basic Ideas in Neural Networks,'' Communications of the ACM, 37(3):87-92, March 1994.
+	Defines a neuron in the context of an artifical neural network. Article also briefly describes backpropagation and other mehods used to train neural networks. It ends with a most interesting section called, "Hints for Successful Applications", specifically stating that careful input modeling - authors recommend "forward" probabilistic models - is key to use of neural networks to solve a problem.
+
+19) B. Widrow, I. Kollar, and M.-C. Liu, ``Statistical Theory of Quantization,'' IEEE Transactions on Instrumentation and Measurement, 45(2):353-361, April 1996.
+   Parallels sampling with quantization. Specifically highlights floating-point quantization. Article ties in with previous ADALINE articles by giving a brieft overview of quantization theory.
+
+20) R. Winter and B. Widrow, ``MADALINE RULE II: A Training Algorithm for Neural Networks,'' Proceedings of the IEEE International Conference on Neural Networks, 1:401-408, July 1988.
+   Presents an algorithm for employing a multiple ADALINE (MADALINE) based neural network. The article, almost conspicuously, lacks a mathematical model and the algorithm's proof seems entirely empirical. Authors mention work being done a mathematical proof. Contains an interesting discussion of how to avoid stagnation of the "Generalization" phase of a neural network. Perhaps most important to note - Learning is when you are training the MADALINE system, Generalization is when it is being presented with patterns outside the training set.
+
+21) D. Nguyen and B. Widrow, ``The Truck Backer-Upper: An Example of Self-Learning in Neural Networks,'' Proceedings of the International Joint Conference on Neural Networks, 2:357-362, 1989.
+   Details a sample application of a MADALINE system. Authors detail how they model a tractor-trailer (semi-truck) and its approach to a loading dock. They empirically prove that, given certain assumptions such as distance from the loading dock, a neural network can solve complicated tasks when properly modeled.
+
+22) B. Widrow and M.A. Lehr, ``Perceptrons, Adalines, and Backpropagation,'' in Handbook of Brain Theory and Neural Networks, M.A. Arbib, ed., pp.719-724, MIT Press, 1995.
+   Overview of the perceptron learning method, the LMS learning method, and backpropagation. Various references to more or less practical applications (the Truck Backer-Upper being one of them) are included. 
+
+23) Widrow, ``Generalization and Information Storage in Networks of Adaline `Neurons','' in Self-Organizing Systems, symposium proceedings, M.C. Yovitz, G.T. Jacobi, and G. Goldstein, eds., pp.435-461, Spartan Books, Washington, DC, 1962.
+   Discusses the memory of an ADALINE and introduces MADALINE (Multiple ADALINE) systems. Of particular interest, at the very end of section B, the paper asserts that due to findings from its source material, "...the average number of random patterns that can be absorbed by an ADALINE is equal to twice the number of weights." Memory of an ADALINE in this case, refers to a physical implementation of an ADALINE and the paper goes on to describe phsyical ADALINEs as collections of memistors (one memistor per input line). The other side of the juxtaposition is traditional core memory. Paper also discusses how noise in the input signals can affect the Learning phase.
+
+24) B. Widrow, et. al, ``Practical Applications for Adaptive Data-Processing Systems,''IRE WESCON Conference Record, pp.1-9, 1963. Reprinted in Rev. A, 10:27-39, 1968.
+   Article describes a few realized applications of ADALLINE based systems. Starting in section F, the paper discusses the issues surrounding proper quantization and coding of input signals. Finishes with a brief overview of using memistors as input lines for physical ADALINEs and how physical ADALINEs could be mass produced in this way.
+
+25) B. Widrow and M.A. Lehr, ``Feedforward Networks,'' in INNS Above Threshold, December 1992.
+   Gives brief into to ADALINE and presents LMS and backpropagation learning approaches. Brief and succinct summary of Widrow's contributions to CI; easy to read.
+
+26) K.J. Hunt, et al., ``Neural Networks for Control Systems - A Survey,''  Automatica, vol. 28, pp. 1083-1112, 1992.
+	Reviews various forms of neural networks; includes a "Summary of Architectures" on page 1092 giving a summary of the first section. The second section of the paper discusses applications of neural networks with respect to non-linear control systems. Reviews of the architectures are in-depth and contains a derivation of, for example, a backpropagation architecture.
+
+27) Rajneese Sharma and Matthijs T. J. Spaan, ``Bayesian-Game-Based Fuzzy Reinforcement Learning Control for Decentralized POMDPs,'' \emph{IEEE Trans. Comput. Intell. AI Games}, vol. 4, pp. 309-328, Dec. 2012.
+   Article studies how a collection of Agents (instantiations of an artifically intelligent machines) could overcome noise of sensors, etc, using a Markov decision process. Specifically, they study a Partially Observable Markov decision process (or POMDP in the paper) and incorporate a fuzzification system where each agent knows a particular piece of information (a Q variable) that may solve another agent's confusion of imperfect sensory input.
