@@ -81,3 +81,41 @@
 
 27) Rajneese Sharma and Matthijs T. J. Spaan, ``Bayesian-Game-Based Fuzzy Reinforcement Learning Control for Decentralized POMDPs,'' \emph{IEEE Trans. Comput. Intell. AI Games}, vol. 4, pp. 309-328, Dec. 2012.
    Article studies how a collection of Agents (instantiations of an artifically intelligent machines) could overcome noise of sensors, etc, using a Markov decision process. Specifically, they study a Partially Observable Markov decision process (or POMDP in the paper) and incorporate a fuzzification system where each agent knows a particular piece of information (a Q variable) that may solve another agent's confusion of imperfect sensory input.
+
+28) Mark de Berg, et al., ``Quadtrees,'' in \emph{Computational Geometry: Algorithms and Applications}, 3rd ed. Berlin, Germany: Springer, 2008, ch. 14, pp. 307-322.
+   Overview of Quadtree. Provides mathematical definition, demonstrates uses, provides algorithms for construction. Highlights key insights, such as inability to bound a Quadtree by the number of points in the underlying dataset.
+
+======== NEED TO READ
+
+29) Hiroshi Tsukimoto, ``Extracting Rules from Trained Neural Networks,'' \emph{IEEE Trans. Neural Netw.}, vol. 11, pp. 377-389, Mar 2000.
+
+30) Russell Reed and Robert J. Marks II, ``Neurosmithing: Improving Neural Network Learning,'' in \emph{The Handbook of Brain Theory and Neural Networks}, 1st ed., Cambridge: The MIT Press, pp. 639-644.
+
+31) Grossberg, S. Adaptive Resonance Theory: How a brain learns to consciously attend, learn, and recognize a changing world. Neural Networks (2012), doi:10.1016/j.neunet.2012.09.017.
+   Citation intentionally deviates from IEEE format (request in footnote of article).
+
+32) V.V. Tolat and B. Widrow, ``An Adaptive Neural Net Controller with Visual Inputs,'' Neural Networks, 1:362, Supplement 1, 1988. 
+
+33) E. Wan, G. Kovacs, J. Rosen and B. Widrow, ``Development of Neural Network Interface for Direct Control of Neuroprostheses,'' Proceedings of the 1990 Meeting of International Neural Network Society and IEEE (IJCNN), 2:3-21, January 1990. 
+
+34) D. Nguyen and B. Widrow, ``Improving the Learning Speed of 2-Layer Neural Networks by Choosing Initial Values of the Adaptive Weights,'' Proceedings of the International Joint Conference on Neural Networks (IJCNN), 3:21-26, June 1990. 
+
+35) B. Widrow and M.A. Lehr, ``Adaptive Neural Networks and their Applications,'' International Journal of Intelligent Systems, 8(4):453-507, April 1993. 
+
+36) B. Widrow, D. Rumelhart, and M.A. Lehr, ``Neural Networks: Applications in Industry, Business, and Science,'' Communications of the ACM, 37(3):93-105, March 1994. 
+
+37) R. Gazit and B. Widrow, ``Backpropagation Through Links: A New Approach to Kinematic Control of Serial Manipulators,'' Proceedings of the IEEE Internaional Symposium on Intelligent Control, pp.99-104, August 1995. 
+
+38) B. Widrow and G. Plett, "`Intelligent' Adaptive Inverse Control," Proceedings of IFAC, pp.104-105, July 1996. 
+
+39) M.M. Lamego, E.P. Ferreira and B. Widrow, ``Neurointerfaces: Learning by Genetic Algorithms,'' Proceedings of the 14th World IFAC Congress, K:13-19, July 1999. 
+
+40) B. Widrow and M.M. Lamego, ``Neurointerfaces: Principles,'' Proceedings of the IEEE Symposium on Adaptive Systems for Signal Processing, Communications, and Control, pp.315-320, October 2000. 
+
+41) B. Widrow and M.M. Lamego, ``Neurointerfaces: Applications,'' Proceedings of the IEEE Symposium on Adaptive Systems for Signal Processing, Communications and Control, pp.441-444, October 2000. 
+
+42) C.-Y. Seong and B. Widrow, ``Neural Dynamic Optimization for Control Systems; I Background,'' IEEE Transactions on Systems, Man and Cybernetics, Part B, 31(4):482-489, August 2001. 
+
+43) C.-Y. Seong and B. Widrow, ``Neural Dynamic Optimization for Control Systems; II Theory,'' IEEE Transactions on Systems, Man and Cybernetics, Part B, 31(4):490-501, August 2001. 
+
+44) C.-Y. Seong and B. Widrow, ``Neural Dynamic Optimization for Control Systems; III Applications,'' IEEE Transactions on Systems, Man and Cybernetics, Part B, 31(4):502-513, August 2001. 
