@@ -121,12 +121,14 @@
 40) B. Widrow and M.M. Lamego, ``Neurointerfaces: Principles,'' Proceedings of the IEEE Symposium on Adaptive Systems for Signal Processing, Communications, and Control, pp.315-320, October 2000. 
    Provides a clear neurointerface definition: "...a form of inverse of the plant to be controlled." Article uses the truck backer-upper as an example of a non-linear system and describes what a neurointerface to a two trailer semi-truck would look like, how you would train it, and how you would control it. Also discusses disturbance and how to address it.
 
-======== NEED TO READ
-
 41) B. Widrow and M.M. Lamego, ``Neurointerfaces: Applications,'' Proceedings of the IEEE Symposium on Adaptive Systems for Signal Processing, Communications and Control, pp.441-444, October 2000. 
+   Reads like a continuation of ``Neurointerfaces: Principles''. Specifically details the two-trailer semi truck and includes not only a notional example, but also a physical scale-model with sample output. Authors also apply their neurointerface principles to a construction crane, providing a detailed model and mentions that in a real application disturbance would have to be accounted for.
 
 42) C.-Y. Seong and B. Widrow, ``Neural Dynamic Optimization for Control Systems; I Background,'' IEEE Transactions on Systems, Man and Cybernetics, Part B, 31(4):482-489, August 2001. 
+   Lots of acronyms. Paper presents how to apply Neural Dynamic Optimizations (NDO) to Multi-Input Multi-Output systems (MIMOs) starting by reviewing Dynamic Programming (DP), the Linear Quadratic Rule (LQR) and Feedforward Optimal Control (FOC). Specifically, the math behind these three stable control algorithms are reviewed followed by a brief discussion of how Neural Networks will apply.
 
 43) C.-Y. Seong and B. Widrow, ``Neural Dynamic Optimization for Control Systems; II Theory,'' IEEE Transactions on Systems, Man and Cybernetics, Part B, 31(4):490-501, August 2001. 
+   Defines and applies Neural Dynamic Optimization (NDO) to the same class of problems as Dynamic Programming. Compares the Dynamic Programming algorithm to the Feedforward Optimal Control algorithm and then equates NDO to FOC. Very math heavy paper proving each step.
 
 44) C.-Y. Seong and B. Widrow, ``Neural Dynamic Optimization for Control Systems; III Applications,'' IEEE Transactions on Systems, Man and Cybernetics, Part B, 31(4):502-513, August 2001. 
+   Applies Neural Dynamic Optimization (defined in the previous two articles read, NDO) to a Boeing 747 time-invariant model. The model proves that NDO can stabilize the lateral motion of a notional 747 (lateral motion is unstable due to the eigenvalues of the state-space matrix). The paper also models backing a truck with two trailers, similar to previous Widrow research, and solves the Iverse Kinematic Problem using NDO. Each example discusses how the models are constructed and provides many graphs of how each variable affects the model and is stabilized and solved.
