@@ -85,32 +85,43 @@
 28) Mark de Berg, et al., ``Quadtrees,'' in \emph{Computational Geometry: Algorithms and Applications}, 3rd ed. Berlin, Germany: Springer, 2008, ch. 14, pp. 307-322.
    Overview of Quadtree. Provides mathematical definition, demonstrates uses, provides algorithms for construction. Highlights key insights, such as inability to bound a Quadtree by the number of points in the underlying dataset.
 
-======== NEED TO READ
-
 29) Hiroshi Tsukimoto, ``Extracting Rules from Trained Neural Networks,'' \emph{IEEE Trans. Neural Netw.}, vol. 11, pp. 377-389, Mar 2000.
+   Article describes how to extract "rules" (logical propositions) from trained neural networks using binary logic in both the continuous and discrete domains. Author defines terminology in ways inconsistent with conventional mathematics in some cases. Examples include discerning political affiliation from voting record and classifying mushrooms based on pre-defined categories. The continuous domain example classifies irises (flower) into various sub-species.
 
 30) Russell Reed and Robert J. Marks II, ``Neurosmithing: Improving Neural Network Learning,'' in \emph{The Handbook of Brain Theory and Neural Networks}, 1st ed., Cambridge: The MIT Press, pp. 639-644.
+   Authors liken neural network training via backpropagation to placing a marble on a "...landscape with peaks and valleys..." and allowing it to roll into a local minimum. They point out this could lead to sub-optimal output and it is time consuming. They discuss how initial weights tend to be chosen and how that affects the learning rate, discuss how to normalize input, and review literature of other methods to speed up the training and generalization phases of neural network use.
 
 31) Grossberg, S. Adaptive Resonance Theory: How a brain learns to consciously attend, learn, and recognize a changing world. Neural Networks (2012), doi:10.1016/j.neunet.2012.09.017.
-   Citation intentionally deviates from IEEE format (request in footnote of article).
+   Citation intentionally deviates from IEEE format (request in footnote of article). Grossberg reviews current and previous advancements in ART. The power beyond ART resides in its ability to perform unsupervised and supervised learning. Article is beyond a paywall, but accessible through MST's library.
 
 32) V.V. Tolat and B. Widrow, ``An Adaptive Neural Net Controller with Visual Inputs,'' Neural Networks, 1:362, Supplement 1, 1988. 
+   This supplement builds on the Broom-Balancing article written by B. Widrow and F.W. Smith. Instead of directly measuring cart position, cart velocity, etc, as inputs to the neural network, the authors describe how binary pixels can also serve as inputs. In effect, the neural networks learns how to behave based on what it "sees". The images presented to the network are separated by fixed time samples and the authors claim that, much as the original broom balancing machine was able to maintain a stable pendulum position, the visual inputs allow the network to achieve the same goal. Article ends with a nod toward the "adaptive computer" where, instead of being programmed, the machine would be modeled in order to solve specific problems.
 
 33) E. Wan, G. Kovacs, J. Rosen and B. Widrow, ``Development of Neural Network Interface for Direct Control of Neuroprostheses,'' Proceedings of the 1990 Meeting of International Neural Network Society and IEEE (IJCNN), 2:3-21, January 1990. 
+   Fascinating paper demonstrating how far along neuroprostheses has come. Pictures showing surgical implants with actual axons growing through allow signal lines very similar to the inputs/outputs of an adaline. The article discusses reverse-engineering the signals coming from an amputee's brain in such a way that a Hopfield neural network could control a prosthetic attachment in a similar way to how the patient's brain controlled the original limb. Article reads largely like a philosophical discussion.
 
 34) D. Nguyen and B. Widrow, ``Improving the Learning Speed of 2-Layer Neural Networks by Choosing Initial Values of the Adaptive Weights,'' Proceedings of the International Joint Conference on Neural Networks (IJCNN), 3:21-26, June 1990. 
+   Article opens with a mathematical definition of a two-layer neural netowrk. Discussion of how to select initial weights follows and the article models a 2-layer neural network's output as a piece-wise linear segment union of the function it is supposed to approximate.
 
 35) B. Widrow and M.A. Lehr, ``Adaptive Neural Networks and their Applications,'' International Journal of Intelligent Systems, 8(4):453-507, April 1993. 
+   Reviews various neural network approaches. Starts off with linear combiners (adalines) and then describes non-linear combining systems, main adalines with pre-processed inputs. The article gives in-depth review of different learning strategies (madaline rule I and II, perceptron, etc) and gives examples towards the end. In general, the examples can be found in other literature by Widrow. Would serve admirably as an introudction paper to someone with Calc III and no CI experience.
 
 36) B. Widrow, D. Rumelhart, and M.A. Lehr, ``Neural Networks: Applications in Industry, Business, and Science,'' Communications of the ACM, 37(3):93-105, March 1994. 
+   Article reads like a laundry list of present and near applications of neural networks in a wide variety of areas. Would serve well as an example of "why should I learn this?" answers. Gives examples of linear and non-linear working examples. In the conclusion, the author notes that problems involving uncertainty (like Online Character Recognition) are well-served by application of a neural network.
 
 37) R. Gazit and B. Widrow, ``Backpropagation Through Links: A New Approach to Kinematic Control of Serial Manipulators,'' Proceedings of the IEEE Internaional Symposium on Intelligent Control, pp.99-104, August 1995. 
+   Application of Backpropagation Through Time to a robotic arm controller; solves a specific Inverse Kinematic Problem using neural networks but without known solutions being presented to the controller. The key insight appears to be defining all kinematic angles relative to the same origin line.
 
 38) B. Widrow and G. Plett, "`Intelligent' Adaptive Inverse Control," Proceedings of IFAC, pp.104-105, July 1996. 
+   Describes the basic concept of using a neural network to control a dynamic system (referred to as a plant in the article). Gives a schematic of a neural network controlling for noise by use of a model. Largely, the article is a dicussion and describes this form of control as an open research area.`
 
 39) M.M. Lamego, E.P. Ferreira and B. Widrow, ``Neurointerfaces: Learning by Genetic Algorithms,'' Proceedings of the 14th World IFAC Congress, K:13-19, July 1999. 
+   Article describes how to train a nerual interface and likens the control required to the inverse model mentioned in "`Intelligent' Adaptive Inverse Control. Also briefly mentions how genetic algorithms can be used to train the neural network. It should be noted that a neural interface in the context of this paper refers to the interface between a human being and a neural network. The neurointerface simplifies the problem on which the human attends.
 
 40) B. Widrow and M.M. Lamego, ``Neurointerfaces: Principles,'' Proceedings of the IEEE Symposium on Adaptive Systems for Signal Processing, Communications, and Control, pp.315-320, October 2000. 
+   Provides a clear neurointerface definition: "...a form of inverse of the plant to be controlled." Article uses the truck backer-upper as an example of a non-linear system and describes what a neurointerface to a two trailer semi-truck would look like, how you would train it, and how you would control it. Also discusses disturbance and how to address it.
+
+======== NEED TO READ
 
 41) B. Widrow and M.M. Lamego, ``Neurointerfaces: Applications,'' Proceedings of the IEEE Symposium on Adaptive Systems for Signal Processing, Communications and Control, pp.441-444, October 2000. 
 
