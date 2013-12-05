@@ -34,8 +34,6 @@ Bibliography of Mathew Anderson, CS358 -
 11) S.E. Taylor, et al., ``Temporal Semantics: An Adaptive Resonance Theory Approach,'' in \emph{Proc. of Int. Joint Conf. on Neural Netw.}, Atlanta, GA, 2009, pp. 3111-3117.
 	Articles describes an attempt to incorporate time into neural networks. The opening discussion about why is particularly worth reading. In short, memory, human and computer, has more meaning when associated with a persistent time model.
 
-========= ALL ABOVE THIS LINE HAVE BEEN PUT ON BLACKBOARD
-
 12) B. Widrow and M.E. Hoff, Jr., ``Adaptive Switching Circuits,'' IRE WESCON Convention Record, 4:96-104, August 1960.
 	Birth paper of Adaline. Paper provides a mathematical model for an adaptive ciruit, describes Adaline, and gives some sample applications.
 
